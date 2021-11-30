@@ -1,0 +1,32 @@
+import * as React from 'react';
+import { Nav, Tonva } from 'tonwa-core';
+import { Controller } from './Controller';
+import { VPage } from './VPage';
+export declare abstract class View<C extends Controller> {
+    protected readonly tonva: Tonva;
+    protected readonly controller: C;
+    protected readonly nav: Nav;
+    protected readonly res: any;
+    protected readonly x: any;
+    protected readonly t: (str: string) => any;
+    constructor(controller: C);
+    protected get isDev(): boolean;
+    get isWebNav(): boolean;
+    navigate(url: string): void;
+    abstract render(param?: any): JSX.Element;
+    protected react(func: () => JSX.Element): JSX.Element;
+    protected renderVm(vm: new (controller: C) => View<C>, param?: any): JSX.Element;
+    protected openVPage(vp: new (controller: C) => VPage<C>, param?: any, afterBack?: () => Promise<void>): Promise<void>;
+    protected event(type: string, value?: any): Promise<void>;
+    protected go(showPage: () => void, url: string, absolute?: boolean): void;
+    protected openPage(view: React.StatelessComponent<any>, param?: any, onClosePage?: (ret: any) => void): void;
+    protected replacePage(view: React.StatelessComponent<any>, param?: any): void;
+    protected openPageElement(page: JSX.Element, onClosePage?: () => void): void;
+    protected replacePageElement(page: JSX.Element, onClosePage?: () => void): void;
+    protected backPage(): void;
+    protected closePage(level?: number): void;
+    protected ceasePage(level?: number): void;
+    protected removeCeased(): void;
+    protected regConfirmClose(confirmClose: () => Promise<boolean>): void;
+    protected popToTopPage(): void;
+}
