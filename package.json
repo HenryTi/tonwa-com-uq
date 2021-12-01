@@ -1,6 +1,6 @@
 {
   "name": "tonwa-react",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "tonwa react client libs",
   "private": false,
   "main": "dist/index.js",
