@@ -157,7 +157,7 @@ var ImageItemEdit = /** @class */ (function (_super) {
             return __generator(this, function (_a) {
                 this.resId = this.value;
                 return [2 /*return*/, new Promise(function (resolve, reject) {
-                        tonwa_core_1.tonva.nav.push(React.createElement(_this.page, { resolve: resolve, reject: reject }), function () { return reject(); });
+                        tonwa_core_1.tonwa.nav.push(React.createElement(_this.page, { resolve: resolve, reject: reject }), function () { return reject(); });
                     })];
             });
         });

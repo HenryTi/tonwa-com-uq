@@ -3,7 +3,7 @@ import classNames from 'classnames';
 //import { nav } from '../nav';
 import { observer } from 'mobx-react';
 import { observable } from 'mobx';
-import { tonva, User, Web } from 'tonwa-core';
+import { tonwa, User, Web } from 'tonwa-core';
 
 export type UserLoader = (userId: number) => Promise<any>;
 
@@ -94,7 +94,7 @@ export const UserIcon = observer((props: UserIconProps): JSX.Element => {
 		</div>;
 	}
 	if (icon.startsWith(':') === true) {
-		icon = tonva.resUrl + icon.substr(1);
+		icon = tonwa.resUrl + icon.substr(1);
 	}
 	return <img src={icon} className={className} alt="img"
 		style={style}

@@ -22,7 +22,7 @@ var tonwa_core_1 = require("tonwa-core");
 // 如果是app方式，用click方式压栈页面
 var Ax = function (axProps) {
     var href = axProps.href, children = axProps.children, className = axProps.className, onClick = axProps.onClick;
-    if (tonwa_core_1.tonva.nav.isWebNav === true) {
+    if (tonwa_core_1.tonwa.nav.isWebNav === true) {
         var aClassName = axProps.aClassName;
         if (!href)
             return (0, jsx_runtime_1.jsx)("span", __assign({ className: "text-danger" }, { children: "Error: href not defined in Ax" }), void 0);
@@ -33,7 +33,7 @@ var Ax = function (axProps) {
                 ret = onClick(evt);
             }
             else {
-                tonwa_core_1.tonva.navigate(href);
+                tonwa_core_1.tonwa.navigate(href);
                 ret = false;
             }
             return ret;
@@ -44,8 +44,8 @@ var Ax = function (axProps) {
         var naClassName = axProps.naClassName;
         if (!onClick) {
             onClick = function () {
-                if (tonwa_core_1.tonva.openSysPage(href) === false) {
-                    tonwa_core_1.tonva.navigate(href);
+                if (tonwa_core_1.tonwa.openSysPage(href) === false) {
+                    tonwa_core_1.tonwa.navigate(href);
                 }
                 ;
                 return false;
@@ -59,14 +59,14 @@ exports.Ax = Ax;
 // 会自动处理href，处理生产版跟测试版之间的不同
 var A = function (props) {
     var children = props.children;
-    if (tonwa_core_1.tonva.nav.isWebNav === false) {
+    if (tonwa_core_1.tonwa.nav.isWebNav === false) {
         return (0, jsx_runtime_1.jsx)("a", __assign({}, props, { children: children }), void 0);
     }
     var href = props.href;
     //if (nav.testing === true) href += '#test';
     var onClick = function (evt) {
         evt.preventDefault();
-        tonwa_core_1.tonva.navigate(href);
+        tonwa_core_1.tonwa.navigate(href);
         return false;
     };
     return (0, jsx_runtime_1.jsx)("a", __assign({}, props, { href: href, onClick: onClick }, { children: children }), void 0);

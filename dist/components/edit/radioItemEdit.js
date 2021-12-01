@@ -134,7 +134,7 @@ var RadioItemEdit = /** @class */ (function (_super) {
             return __generator(this, function (_a) {
                 return [2 /*return*/, new Promise(function (resolve, reject) {
                         var element = React.createElement(_this.page, { resolve: resolve, reject: reject });
-                        tonwa_core_1.tonva.nav.push(element, reject);
+                        tonwa_core_1.tonwa.nav.push(element, reject);
                     })];
             });
         });

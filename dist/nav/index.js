@@ -1,5 +1,5 @@
 "use strict";
-//import { Tonva } from 'tonva-core';
+//import { Tonwa } from 'tonwa-core';
 //import { Nav } from './Nav';
 //import { NavView } from './NavView';
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
@@ -15,8 +15,8 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 Object.defineProperty(exports, "__esModule", { value: true });
 /*
 export let nav: Nav; // = new Nav();
-export function initNav(tonva: Tonva) {
-    nav = new Nav(tonva);
+export function initNav(tonwa: Tonwa) {
+    nav = new Nav(tonwa);
 }
 export * from './Nav';
 */

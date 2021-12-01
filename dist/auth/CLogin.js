@@ -82,14 +82,14 @@ var CLogin = /** @class */ (function (_super) {
                             case 0: return [4 /*yield*/, this.web.userApi.login({
                                     user: un,
                                     pwd: pwd,
-                                    guest: this.tonva.guest,
+                                    guest: this.tonwa.guest,
                                 })];
                             case 1:
                                 user = _a.sent();
                                 if (user === undefined)
                                     return [2 /*return*/, false];
                                 console.log("onLoginSubmit: user=%s pwd:%s", user.name, user.token);
-                                return [4 /*yield*/, this.tonva.userLogined(user, callback)];
+                                return [4 /*yield*/, this.tonwa.userLogined(user, callback)];
                             case 2:
                                 _a.sent();
                                 return [2 /*return*/, true];
@@ -106,7 +106,7 @@ var CLogin = /** @class */ (function (_super) {
             var _this = this;
             return __generator(this, function (_a) {
                 this.openVPage(VLogout_1.VLogout, function () {
-                    _this.tonva.logout(callback);
+                    _this.tonwa.logout(callback);
                 });
                 return [2 /*return*/];
             });

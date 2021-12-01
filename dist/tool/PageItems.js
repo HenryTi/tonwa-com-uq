@@ -42,12 +42,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.PageItems = void 0;
 var lodash_1 = __importDefault(require("lodash"));
 var mobx_1 = require("mobx");
-//import { Tonva } from '../Tonva';
+//import { Tonwa } from '../Tonwa';
 var PageItems = /** @class */ (function () {
     function PageItems(itemObservable) {
         var _this = this;
         if (itemObservable === void 0) { itemObservable = false; }
-        //protected tonva: Tonva;
+        //protected tonwa: Tonwa;
         this.loading = false;
         this.beforeLoad = true;
         this.loaded = false;
@@ -83,7 +83,7 @@ var PageItems = /** @class */ (function () {
         this.pageSize = 30;
         this.appendPosition = 'tail';
         this.changing = false;
-        //this.tonva = tonva;
+        //this.tonwa = tonwa;
         (0, mobx_1.makeObservable)(this, {
             loading: mobx_1.observable,
             beforeLoad: mobx_1.observable,

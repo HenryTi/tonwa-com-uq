@@ -59,16 +59,16 @@ require("../css/animation.css");
 var reloadPage_1 = require("../components/reloadPage");
 //import { PageWebNav } from '../components/page';
 var login_1 = require("../components/login");
-//import { env, FetchError, LocalData, User } from 'tonva-core';
+//import { env, FetchError, LocalData, User } from 'tonwa-core';
 var FetchErrorView_1 = require("./FetchErrorView");
 var tonwa_core_2 = require("tonwa-core");
-//import {guestApi, logoutApis, setCenterUrl, setCenterToken, host, resUrlFromHost, messageHub} from 'tonva-core';
-//import { userApi } from 'tonva-core';
+//import {guestApi, logoutApis, setCenterUrl, setCenterToken, host, resUrlFromHost, messageHub} from 'tonwa-core';
+//import { userApi } from 'tonwa-core';
 var NavView_1 = require("./NavView");
 var logMark;
 var logs = [];
 var Nav = /** @class */ (function () {
-    function Nav(tonva) {
+    function Nav(tonwa) {
         var _this = this;
         this.local = new tonwa_core_2.LocalData();
         this.user = null;
@@ -225,7 +225,7 @@ var Nav = /** @class */ (function () {
         (0, mobx_1.makeObservable)(this, {
             user: mobx_1.observable,
         });
-        this.web = tonva.web;
+        this.web = tonwa.web;
         var lang = tonwa_core_1.resOptions.lang, district = tonwa_core_1.resOptions.district;
         this.language = lang;
         this.culture = district;
@@ -750,7 +750,7 @@ var Nav = /** @class */ (function () {
                         if (this.login)
                             return [2 /*return*/, this.login];
                         _a = this;
-                        return [4 /*yield*/, this.createLogin(this.tonva)];
+                        return [4 /*yield*/, this.createLogin(this.tonwa)];
                     case 1: return [2 /*return*/, _a.login = _b.sent()];
                 }
             });
@@ -787,7 +787,7 @@ var Nav = /** @class */ (function () {
     Nav.prototype.showRegister = function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
-                (0, login_1.showRegister)(this.tonva);
+                (0, login_1.showRegister)(this.tonwa);
                 return [2 /*return*/];
             });
         });
@@ -795,7 +795,7 @@ var Nav = /** @class */ (function () {
     Nav.prototype.showForget = function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
-                (0, login_1.showForget)(this.tonva);
+                (0, login_1.showForget)(this.tonwa);
                 return [2 /*return*/];
             });
         });

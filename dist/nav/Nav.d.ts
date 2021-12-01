@@ -1,5 +1,5 @@
 /// <reference types="react" />
-import { Navigo, RouteFunc, Hooks, NamedRoute, Tonva, Login } from 'tonwa-core';
+import { Navigo, RouteFunc, Hooks, NamedRoute, Tonwa, Login } from 'tonwa-core';
 import 'font-awesome/css/font-awesome.min.css';
 import '../css/va-form.css';
 import '../css/va.css';
@@ -15,7 +15,7 @@ export interface NavSettings {
     htmlTitle?: string;
 }
 export declare class Nav {
-    private readonly tonva;
+    private readonly tonwa;
     private readonly web;
     private navView;
     private wsHost;
@@ -27,7 +27,7 @@ export declare class Nav {
     language: string;
     culture: string;
     resUrl: string;
-    constructor(tonva: Tonva);
+    constructor(tonwa: Tonwa);
     renderNavView(onLogined: (isUserLogin?: boolean) => Promise<void>, notLogined?: () => Promise<void>, userPassword?: () => Promise<{
         user: string;
         password: string;
@@ -98,7 +98,7 @@ export declare class Nav {
     showPrivacyPage: () => void;
     private privacyPage;
     private createLogin;
-    setCreateLogin(createLogin: (tonva: Tonva) => Promise<Login>): void;
+    setCreateLogin(createLogin: (tonwa: Tonwa) => Promise<Login>): void;
     private login;
     private getLogin;
     showLogin(callback?: (user: User) => Promise<void>, withBack?: boolean): Promise<void>;

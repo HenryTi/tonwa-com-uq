@@ -54,13 +54,13 @@ var ui_1 = require("../ui");
 var components_1 = require("../components");
 var mobx_1 = require("mobx");
 var Controller = /** @class */ (function () {
-    function Controller(tonva) {
+    function Controller(tonwa) {
         var _this = this;
         this.res = {};
         this.t = function (str) { return _this.internalT(str) || str; };
         this.isDev = tonwa_core_1.env.isDevelopment;
-        this.tonva = tonva;
-        this.nav = tonva.nav;
+        this.tonwa = tonwa;
+        this.nav = tonwa.nav;
     }
     Controller.prototype.shallow = function (data) {
         var ret = (0, mobx_1.makeObservable)(data, this.buildReactiveProps(data, mobx_1.observable.shallow));
@@ -89,7 +89,7 @@ var Controller = /** @class */ (function () {
     Controller.prototype.runInAction = function (fn) {
         return (0, mobx_1.runInAction)(fn);
     };
-    Controller.prototype.getTonva = function () { return this.tonva; };
+    Controller.prototype.getTonwa = function () { return this.tonwa; };
     Controller.prototype.beforeInit = function () { };
     Controller.prototype.afterInit = function () { };
     Controller.prototype.internalInit = function () {

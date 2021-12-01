@@ -101,7 +101,7 @@ exports.UserIcon = (0, mobx_react_1.observer)(function (props) {
         return (0, jsx_runtime_1.jsx)("div", __assign({ className: (0, classnames_1.default)(className, 'image-none'), style: style }, { children: (0, jsx_runtime_1.jsx)("i", { className: "fa fa-file-o" }, void 0) }), void 0);
     }
     if (icon.startsWith(':') === true) {
-        icon = tonwa_core_1.tonva.resUrl + icon.substr(1);
+        icon = tonwa_core_1.tonwa.resUrl + icon.substr(1);
     }
     return (0, jsx_runtime_1.jsx)("img", { src: icon, className: className, alt: "img", style: style, onError: function (evt) {
             if (altImage)

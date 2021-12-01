@@ -126,7 +126,7 @@ var Page = /** @class */ (function (_super) {
         var _a = this.props, onScroll = _a.onScroll, onScrollTop = _a.onScrollTop, onScrollBottom = _a.onScrollBottom, children = _a.children, className = _a.className, webNav = _a.webNav;
         var pageWebNav;
         if (!webNav) {
-            pageWebNav = tonwa_core_1.tonva.nav.pageWebNav;
+            pageWebNav = tonwa_core_1.tonwa.nav.pageWebNav;
         }
         else {
             pageWebNav = webNav;

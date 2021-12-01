@@ -5,7 +5,7 @@ import './css/va-form.css';
 import './css/va.css';
 import './css/animation.css';
 import { NavView } from './nav';
-export declare class TonvaReact extends Tonwa {
+export declare class TonwaReact extends Tonwa {
     navView: NavView;
     constructor();
     createWeb(): Web;

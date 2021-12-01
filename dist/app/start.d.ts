@@ -1,3 +1,3 @@
-import { Tonva } from 'tonwa-core';
+import { Tonwa } from 'tonwa-core';
 import { AppConfig, CAppBase } from './CAppBase';
-export declare function start(CApp: new (tonva: Tonva, config: AppConfig) => CAppBase<any>, tonva: Tonva, appConfig: AppConfig, isUserLogin?: boolean): Promise<void>;
+export declare function start(CApp: new (tonwa: Tonwa, config: AppConfig) => CAppBase<any>, tonwa: Tonwa, appConfig: AppConfig, isUserLogin?: boolean): Promise<void>;

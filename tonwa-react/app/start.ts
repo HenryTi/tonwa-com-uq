@@ -1,7 +1,7 @@
-import { Tonva } from 'tonwa-core';
+import { Tonwa } from 'tonwa-core';
 import { AppConfig, CAppBase } from './CAppBase';
 
-export async function start(CApp: new (tonva: Tonva, config: AppConfig) => CAppBase<any>, tonva: Tonva, appConfig: AppConfig, isUserLogin?: boolean) {
+export async function start(CApp: new (tonwa: Tonwa, config: AppConfig) => CAppBase<any>, tonwa: Tonwa, appConfig: AppConfig, isUserLogin?: boolean) {
 	if (appConfig) {
 		let { htmlTitle } = appConfig;
 		if (htmlTitle) {
@@ -17,6 +17,6 @@ export async function start(CApp: new (tonva: Tonva, config: AppConfig) => CAppB
 		}
 	}
 
-	let cApp = new CApp(tonva, appConfig);
+	let cApp = new CApp(tonwa, appConfig);
 	await cApp.start(isUserLogin);
 }

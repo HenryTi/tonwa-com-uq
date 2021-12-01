@@ -89,6 +89,6 @@ class VQuitDone extends VUserQuitBase {
     protected get button1Caption(): string { return '退出'; }
     protected get button2Caption(): string { return null; }
     protected onClickButton1() {
-        this.tonva.logout();
+        this.tonwa.logout();
     }
 }

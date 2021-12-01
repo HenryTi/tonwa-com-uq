@@ -57,7 +57,7 @@ var ReloadPage = /** @class */ (function (_super) {
         var _this = _super.call(this, props) || this;
         _this.reload = function () {
             clearInterval(_this.timerHandler);
-            tonwa_core_1.tonva.reload();
+            tonwa_core_1.tonwa.reload();
         };
         var seconds = props.seconds;
         if (seconds === undefined)

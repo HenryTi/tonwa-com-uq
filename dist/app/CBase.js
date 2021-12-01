@@ -56,7 +56,7 @@ var vm_1 = require("../vm");
 var CBase = /** @class */ (function (_super) {
     __extends(CBase, _super);
     function CBase(cApp) {
-        var _this = _super.call(this, cApp.getTonva()) || this;
+        var _this = _super.call(this, cApp.getTonwa()) || this;
         _this.cApp = cApp;
         if (cApp) {
             var uqs = cApp.uqs, web = cApp.web;

@@ -106,7 +106,7 @@ var VUnsupportedUnit = /** @class */ (function (_super) {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.page = function () {
             var _a = _this.params, predefinedUnit = _a.predefinedUnit, uqsLoadErrors = _a.uqsLoadErrors;
-            var user = _this.tonva.user;
+            var user = _this.tonwa.user;
             var userName = user ? user.name : '[未登录]';
             //let {appOwner, appName} = UQsMan.value;
             return (0, jsx_runtime_1.jsx)(components_1.Page, __assign({ header: "APP\u65E0\u6CD5\u8FD0\u884C", logout: true }, { children: (0, jsx_runtime_1.jsxs)("div", __assign({ className: "m-3 text-danger container" }, { children: [(0, jsx_runtime_1.jsxs)("div", __assign({ className: "mb-3 row" }, { children: [(0, jsx_runtime_1.jsx)("div", __assign({ className: "col-sm-3 font-weight-bold" }, { children: "\u767B\u5F55\u7528\u6237" }), void 0), (0, jsx_runtime_1.jsx)("div", __assign({ className: "col-sm text-body" }, { children: userName }), void 0)] }), void 0), (0, jsx_runtime_1.jsxs)("div", __assign({ className: "mb-3 row" }, { children: [(0, jsx_runtime_1.jsx)("div", __assign({ className: "col-sm-3 font-weight-bold" }, { children: "\u9884\u8BBE\u5C0F\u53F7" }), void 0), (0, jsx_runtime_1.jsx)("div", __assign({ className: "col-sm text-body" }, { children: predefinedUnit || (0, jsx_runtime_1.jsx)("small", __assign({ className: "" }, { children: "[\u65E0\u9884\u8BBE\u5C0F\u53F7]" }), void 0) }), void 0)] }), void 0), uqsLoadErrors && uqsLoadErrors.map(function (v) {
@@ -189,7 +189,7 @@ var VErrorsPage = /** @class */ (function (_super) {
     function VErrorsPage() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.page = function (errors) {
-            return (0, jsx_runtime_1.jsx)(components_1.Page, __assign({ header: "ERROR" }, { children: (0, jsx_runtime_1.jsxs)("div", __assign({ className: "m-3" }, { children: [(0, jsx_runtime_1.jsx)("div", __assign({ className: "p-3 d-flex justify-content-center align-items-center" }, { children: (0, jsx_runtime_1.jsx)("button", __assign({ className: "btn btn-danger", onClick: _this.tonva.resetAll }, { children: "\u91CD\u542F\u7F51\u9875" }), void 0) }), void 0), (0, jsx_runtime_1.jsx)("div", { children: "Load Uqs \u53D1\u751F\u9519\u8BEF\uFF1A" }, void 0), errors.errors.map(function (r, i) { return (0, jsx_runtime_1.jsx)("div", { children: r }, i); })] }), void 0) }), void 0);
+            return (0, jsx_runtime_1.jsx)(components_1.Page, __assign({ header: "ERROR" }, { children: (0, jsx_runtime_1.jsxs)("div", __assign({ className: "m-3" }, { children: [(0, jsx_runtime_1.jsx)("div", __assign({ className: "p-3 d-flex justify-content-center align-items-center" }, { children: (0, jsx_runtime_1.jsx)("button", __assign({ className: "btn btn-danger", onClick: _this.tonwa.resetAll }, { children: "\u91CD\u542F\u7F51\u9875" }), void 0) }), void 0), (0, jsx_runtime_1.jsx)("div", { children: "Load Uqs \u53D1\u751F\u9519\u8BEF\uFF1A" }, void 0), errors.errors.map(function (r, i) { return (0, jsx_runtime_1.jsx)("div", { children: r }, i); })] }), void 0) }), void 0);
         };
         return _this;
     }

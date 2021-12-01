@@ -39,7 +39,7 @@ var VLogout = /** @class */ (function (_super) {
     };
     VLogout.prototype.header = function () { return this.isWebNav === true ? false : '安全退出'; };
     VLogout.prototype.footer = function () {
-        return (0, jsx_runtime_1.jsx)("div", __assign({ className: "mt-5 text-center justify-content-center" }, { children: (0, jsx_runtime_1.jsx)("button", __assign({ className: "btn btn-outline-warning", onClick: this.tonva.resetAll }, { children: "\u5347\u7EA7\u8F6F\u4EF6" }), void 0) }), void 0);
+        return (0, jsx_runtime_1.jsx)("div", __assign({ className: "mt-5 text-center justify-content-center" }, { children: (0, jsx_runtime_1.jsx)("button", __assign({ className: "btn btn-outline-warning", onClick: this.tonwa.resetAll }, { children: "\u5347\u7EA7\u8F6F\u4EF6" }), void 0) }), void 0);
     };
     Object.defineProperty(VLogout.prototype, "back", {
         get: function () { return 'close'; },

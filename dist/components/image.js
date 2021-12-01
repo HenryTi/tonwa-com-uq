@@ -25,7 +25,7 @@ function Image(props) {
     if (src) {
         if (src.indexOf('.') !== 0) {
             if (src.startsWith(':') === true) {
-                src = tonwa_core_1.tonva.resUrl + src.substr(1);
+                src = tonwa_core_1.tonwa.resUrl + src.substr(1);
             }
             return (0, jsx_runtime_1.jsx)("img", { src: src, className: className, alt: "img", style: style, onError: function (evt) {
                     if (altImage)

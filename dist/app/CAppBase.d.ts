@@ -1,5 +1,5 @@
 /// <reference types="react" />
-import { /*centerApi, logoutApis, */ AppConfig as AppConfigCore, Tonva, Web } from "tonwa-core";
+import { /*centerApi, logoutApis, */ AppConfig as AppConfigCore, Tonwa, Web } from "tonwa-core";
 import { User, UqsConfig as UqsConfigCore } from 'tonwa-core';
 import { RouteFunc, Hooks, Navigo, NamedRoute } from "tonwa-core";
 import { ControllerWithWeb } from '../vm';
@@ -25,7 +25,7 @@ export declare abstract class CAppBase<U> extends ControllerWithWeb {
     readonly web: Web;
     timezone: number;
     unitTimezone: number;
-    constructor(tonva: Tonva, config?: AppConfig);
+    constructor(tonwa: Tonwa, config?: AppConfig);
     get uqs(): U;
     internalT(str: string): any;
     setRes(res: any): void;

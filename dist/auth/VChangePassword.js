@@ -118,7 +118,7 @@ var VChangePassword = /** @class */ (function (_super) {
                             context.setError('orgPassword', '原密码错误');
                             return [2 /*return*/];
                         }
-                        tonwa_core_1.tonva.nav.replace((0, jsx_runtime_1.jsx)(components_1.Page, __assign({ header: "\u4FEE\u6539\u5BC6\u7801", back: "close" }, { children: (0, jsx_runtime_1.jsx)("div", __assign({ className: "m-3  text-success" }, { children: "\u5BC6\u7801\u4FEE\u6539\u6210\u529F\uFF01" }), void 0) }), void 0));
+                        tonwa_core_1.tonwa.nav.replace((0, jsx_runtime_1.jsx)(components_1.Page, __assign({ header: "\u4FEE\u6539\u5BC6\u7801", back: "close" }, { children: (0, jsx_runtime_1.jsx)("div", __assign({ className: "m-3  text-success" }, { children: "\u5BC6\u7801\u4FEE\u6539\u6210\u529F\uFF01" }), void 0) }), void 0));
                         return [2 /*return*/];
                 }
             });

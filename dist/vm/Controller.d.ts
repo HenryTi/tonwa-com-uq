@@ -1,5 +1,5 @@
 /// <reference types="react" />
-import { PageHeaderProps, PageWebNav, Tonva, Nav } from 'tonwa-core';
+import { PageHeaderProps, PageWebNav, Tonwa, Nav } from 'tonwa-core';
 import { VPage } from './VPage';
 import { View } from './View';
 export interface ConfirmOptions {
@@ -18,7 +18,7 @@ export interface WebNav<C extends Controller> {
     renderPageHeader?: (props: PageHeaderProps<JSX.Element>) => JSX.Element;
 }
 export declare abstract class Controller {
-    protected readonly tonva: Tonva;
+    protected readonly tonwa: Tonwa;
     protected nav: Nav;
     protected res: any;
     t: (str: string) => string | JSX.Element;
@@ -26,12 +26,12 @@ export declare abstract class Controller {
     label: string | JSX.Element;
     readonly isDev: boolean;
     pageWebNav: PageWebNav<JSX.Element>;
-    constructor(tonva: Tonva);
+    constructor(tonwa: Tonwa);
     shallow<T extends object>(data: T): T;
     deep<T extends object>(data: T): T;
     private buildReactiveProps;
     runInAction<T>(fn: () => T): T;
-    getTonva(): Tonva;
+    getTonwa(): Tonwa;
     protected beforeInit(): void;
     protected afterInit(): void;
     internalInit(...param: any[]): void;

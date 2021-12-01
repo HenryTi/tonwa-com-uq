@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { Nav, Tonva } from 'tonwa-core';
+import { Nav, Tonwa } from 'tonwa-core';
 import { Controller } from './Controller';
 import { VPage } from './VPage';
 export declare abstract class View<C extends Controller> {
-    protected readonly tonva: Tonva;
+    protected readonly tonwa: Tonwa;
     protected readonly controller: C;
     protected readonly nav: Nav;
     protected readonly res: any;

@@ -39,21 +39,21 @@ export abstract class CRegBase extends ControllerWithWeb {
     }
 
     login = async (account?: string) => {
-        let retUser = await this.web.userApi.login({ user: account || this.account, pwd: this.password, guest: this.tonva.guest });
+        let retUser = await this.web.userApi.login({ user: account || this.account, pwd: this.password, guest: this.tonwa.guest });
         if (retUser === undefined) {
             alert('something wrong!');
             return;
         }
-        await this.tonva.userLogined(retUser);
+        await this.tonwa.userLogined(retUser);
         //await nav.start();
-        if (this.isWebNav) this.tonva.navigate('/');
+        if (this.isWebNav) this.tonwa.navigate('/');
     }
 
     async checkAccount(): Promise<string> {
         let ret = await this.web.userApi.isExists(this.account);
         let error = this.accountError(ret);
         if (error !== undefined) return error;
-        ret = await this.web.userApi.sendVerify(this.account, this.type, this.tonva.oem);
+        ret = await this.web.userApi.sendVerify(this.account, this.type, this.tonwa.oem);
         this.toVerify();
         return;
     }
@@ -93,7 +93,7 @@ export class CRegister extends CRegBase {
         }
         let ret = await this.web.userApi.register(params);
         if (ret === 0) {
-            this.tonva.nav.clear();
+            this.tonwa.nav.clear();
             this.toSuccess();
             return;
         }
@@ -130,7 +130,7 @@ export class CForget extends CRegBase {
             console.log(err);
             throw err;
         }
-        this.tonva.nav.clear();
+        this.tonwa.nav.clear();
         this.toSuccess();
         return;
     }

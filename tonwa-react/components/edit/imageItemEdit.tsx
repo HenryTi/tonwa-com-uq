@@ -6,7 +6,7 @@ import { ImageUploader } from '../resUploader';
 //import { nav } from '../../nav';
 import { ItemEdit } from './itemEdit';
 import { Edit } from './edit';
-import { tonva } from 'tonwa-core';
+import { tonwa } from 'tonwa-core';
 
 export class ImageItemEdit extends ItemEdit {
     get uiItem(): UiImageItem { return this._uiItem as UiImageItem }
@@ -22,7 +22,7 @@ export class ImageItemEdit extends ItemEdit {
     protected async internalStart(): Promise<any> {
         this.resId = this.value;
         return new Promise<any>((resolve, reject) => {
-            tonva.nav.push(React.createElement(this.page, { resolve: resolve, reject: reject }), () => reject());
+            tonwa.nav.push(React.createElement(this.page, { resolve: resolve, reject: reject }), () => reject());
         });
     }
 

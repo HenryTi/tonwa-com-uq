@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { tonva } from 'tonwa-core';
+import { tonwa } from 'tonwa-core';
 // import { nav } from '../nav';
 import { Page } from './page/page';
 
@@ -33,7 +33,7 @@ export class ReloadPage extends React.Component<Props, State> {
     }
     private reload = () => {
         clearInterval(this.timerHandler);
-        tonva.reload();
+        tonwa.reload();
     }
     render() {
         let { seconds } = this.state;

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { makeObservable, observable } from 'mobx';
 import { Page, ItemSchema, UiSchema, StringSchema, UiTextItem, Edit, ImageSchema, UiImageItem } from '../components';
-import { tonva } from 'tonwa-core';
+import { tonwa } from 'tonwa-core';
 
 export class EditMeInfo extends React.Component {
     private schema: ItemSchema[] = [
@@ -21,7 +21,7 @@ export class EditMeInfo extends React.Component {
         makeObservable(this, {
             data: observable,
         })
-        let { nick, icon } = tonva.user;
+        let { nick, icon } = tonwa.user;
         this.data = {
             nick: nick,
             icon: icon,

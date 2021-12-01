@@ -64,8 +64,8 @@ exports.ControllerWithWeb = void 0;
 var Controller_1 = require("./Controller");
 var ControllerWithWeb = /** @class */ (function (_super) {
     __extends(ControllerWithWeb, _super);
-    function ControllerWithWeb(tonva) {
-        var _this = _super.call(this, tonva) || this;
+    function ControllerWithWeb(tonwa) {
+        var _this = _super.call(this, tonwa) || this;
         //private disposer:()=>void;
         _this.dispose = function () {
             // message listener的清理
@@ -83,7 +83,7 @@ var ControllerWithWeb = /** @class */ (function (_super) {
                 }
             });
         }); };
-        _this.web = tonva.web;
+        _this.web = tonwa.web;
         return _this;
     }
     ControllerWithWeb.prototype.onDispose = function () {
@@ -100,13 +100,13 @@ var ControllerWithWeb = /** @class */ (function (_super) {
         });
     };
     Object.defineProperty(ControllerWithWeb.prototype, "user", {
-        get: function () { return this.tonva.user; },
+        get: function () { return this.tonwa.user; },
         enumerable: false,
         configurable: true
     });
     Object.defineProperty(ControllerWithWeb.prototype, "isLogined", {
         get: function () {
-            var user = this.tonva.user;
+            var user = this.tonwa.user;
             if (!user)
                 return false;
             return user.id > 0;

@@ -13,7 +13,7 @@ import { createLogin, showForget, showRegister } from './components/login';
 import { SystemNotifyPage } from './nav/FetchErrorView';
 import { NavView } from './nav';
 
-export class TonvaReact extends Tonwa {
+export class TonwaReact extends Tonwa {
     navView: NavView;
 
     constructor() {

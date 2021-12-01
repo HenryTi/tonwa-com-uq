@@ -1,6 +1,6 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import { tonva } from 'tonwa-core';
+import { tonwa } from 'tonwa-core';
 //import { nav } from '../nav';
 
 export interface ImageProps {
@@ -17,7 +17,7 @@ export function Image(props: ImageProps) {
 	if (src) {
 		if (src.indexOf('.') !== 0) {
 			if (src.startsWith(':') === true) {
-				src = tonva.resUrl + src.substr(1);
+				src = tonwa.resUrl + src.substr(1);
 			}
 			return <img src={src} className={className} alt="img"
 				style={style}

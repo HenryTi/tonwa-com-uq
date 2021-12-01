@@ -37,7 +37,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.start = void 0;
-function start(CApp, tonva, appConfig, isUserLogin) {
+function start(CApp, tonwa, appConfig, isUserLogin) {
     return __awaiter(this, void 0, void 0, function () {
         var htmlTitle, html, html0, version, cApp;
         return __generator(this, function (_a) {
@@ -57,7 +57,7 @@ function start(CApp, tonva, appConfig, isUserLogin) {
                             }
                         }
                     }
-                    cApp = new CApp(tonva, appConfig);
+                    cApp = new CApp(tonwa, appConfig);
                     return [4 /*yield*/, cApp.start(isUserLogin)];
                 case 1:
                     _a.sent();

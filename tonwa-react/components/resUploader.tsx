@@ -6,7 +6,7 @@ import { Page } from './page/page';
 import { observer } from 'mobx-react';
 import { makeObservable, observable } from 'mobx';
 import { LMR } from './simple';
-import { tonva } from 'tonwa-core';
+import { tonwa } from 'tonwa-core';
 
 export interface ResUploaderProps {
     className?: string;
@@ -49,10 +49,10 @@ export class ResUploader extends React.Component<ResUploaderProps> {
     }
 
     upload = async (formData?: FormData): Promise<string | { error: any }> => {
-        let resUrl = tonva.resUrl + 'upload';
+        let resUrl = tonwa.resUrl + 'upload';
         if (!formData) formData = this.buildFormData();
         try {
-            tonva.nav.startWait();
+            tonwa.nav.startWait();
             let headers = new Headers();
             headers.append('Access-Control-Allow-Origin', '*');
             //2019-12-18：因为 vivo按oppo某些版本不支持，暂时先不要 
@@ -71,7 +71,7 @@ export class ResUploader extends React.Component<ResUploaderProps> {
             return { error: err };
         }
         finally {
-            tonva.nav.endWait();
+            tonwa.nav.endWait();
         }
     }
 
@@ -314,7 +314,7 @@ export class ImageUploader extends React.Component<ImageUploaderProps> {
     }
 
     private showOrgImage = () => {
-        tonva.nav.push(<Page header="原图">
+        tonwa.nav.push(<Page header="原图">
             <div className="p-3 text-center">
                 <ImageControl className="h-min-4c" style={{ maxWidth: '100%' }} src={this.srcImage} />
             </div>

@@ -160,7 +160,7 @@ var ItemEdit = /** @class */ (function () {
     };
     ItemEdit.prototype.internalEnd = function () {
         return __awaiter(this, void 0, void 0, function () { return __generator(this, function (_a) {
-            tonwa_core_1.tonva.nav.pop(1);
+            tonwa_core_1.tonwa.nav.pop(1);
             return [2 /*return*/];
         }); });
     };

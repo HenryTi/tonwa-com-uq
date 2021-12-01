@@ -56,7 +56,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.showForget = exports.showRegister = exports.createLogin = void 0;
-function createLogin(tonva) {
+function createLogin(tonwa) {
     return __awaiter(this, void 0, void 0, function () {
         var importCLogin;
         return __generator(this, function (_a) {
@@ -64,13 +64,13 @@ function createLogin(tonva) {
                 case 0: return [4 /*yield*/, Promise.resolve().then(function () { return __importStar(require('../auth/CLogin')); })];
                 case 1:
                     importCLogin = _a.sent();
-                    return [2 /*return*/, new importCLogin.CLogin(tonva)];
+                    return [2 /*return*/, new importCLogin.CLogin(tonwa)];
             }
         });
     });
 }
 exports.createLogin = createLogin;
-function showRegister(tonva) {
+function showRegister(tonwa) {
     return __awaiter(this, void 0, void 0, function () {
         var importCRegister, c;
         return __generator(this, function (_a) {
@@ -78,7 +78,7 @@ function showRegister(tonva) {
                 case 0: return [4 /*yield*/, Promise.resolve().then(function () { return __importStar(require('../auth/register/CRegister')); })];
                 case 1:
                     importCRegister = _a.sent();
-                    c = new importCRegister.CRegister(tonva);
+                    c = new importCRegister.CRegister(tonwa);
                     c.start();
                     return [2 /*return*/];
             }
@@ -86,7 +86,7 @@ function showRegister(tonva) {
     });
 }
 exports.showRegister = showRegister;
-function showForget(tonva) {
+function showForget(tonwa) {
     return __awaiter(this, void 0, void 0, function () {
         var importCRegister, c;
         return __generator(this, function (_a) {
@@ -94,7 +94,7 @@ function showForget(tonva) {
                 case 0: return [4 /*yield*/, Promise.resolve().then(function () { return __importStar(require('../auth/register/CRegister')); })];
                 case 1:
                     importCRegister = _a.sent();
-                    c = new importCRegister.CForget(tonva);
+                    c = new importCRegister.CForget(tonwa);
                     c.start();
                     return [2 /*return*/];
             }

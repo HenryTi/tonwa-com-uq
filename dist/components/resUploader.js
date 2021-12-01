@@ -108,13 +108,13 @@ var ResUploader = /** @class */ (function (_super) {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        resUrl = tonwa_core_1.tonva.resUrl + 'upload';
+                        resUrl = tonwa_core_1.tonwa.resUrl + 'upload';
                         if (!formData)
                             formData = this.buildFormData();
                         _a.label = 1;
                     case 1:
                         _a.trys.push([1, 4, 5, 6]);
-                        tonwa_core_1.tonva.nav.startWait();
+                        tonwa_core_1.tonwa.nav.startWait();
                         headers = new Headers();
                         headers.append('Access-Control-Allow-Origin', '*');
                         return [4 /*yield*/, fetch(resUrl, {
@@ -134,7 +134,7 @@ var ResUploader = /** @class */ (function (_super) {
                         console.error('%s %s', resUrl, err_1);
                         return [2 /*return*/, { error: err_1 }];
                     case 5:
-                        tonwa_core_1.tonva.nav.endWait();
+                        tonwa_core_1.tonwa.nav.endWait();
                         return [7 /*endfinally*/];
                     case 6: return [2 /*return*/];
                 }
@@ -358,7 +358,7 @@ var ImageUploader = /** @class */ (function (_super) {
             return;
         };
         _this.showOrgImage = function () {
-            tonwa_core_1.tonva.nav.push((0, jsx_runtime_1.jsx)(page_1.Page, __assign({ header: "\u539F\u56FE" }, { children: (0, jsx_runtime_1.jsx)("div", __assign({ className: "p-3 text-center" }, { children: (0, jsx_runtime_1.jsx)(image_1.Image, { className: "h-min-4c", style: { maxWidth: '100%' }, src: _this.srcImage }, void 0) }), void 0) }), void 0));
+            tonwa_core_1.tonwa.nav.push((0, jsx_runtime_1.jsx)(page_1.Page, __assign({ header: "\u539F\u56FE" }, { children: (0, jsx_runtime_1.jsx)("div", __assign({ className: "p-3 text-center" }, { children: (0, jsx_runtime_1.jsx)(image_1.Image, { className: "h-min-4c", style: { maxWidth: '100%' }, src: _this.srcImage }, void 0) }), void 0) }), void 0));
         };
         (0, mobx_1.makeObservable)(_this, {
             file: mobx_1.observable,

@@ -2,7 +2,7 @@ import { Form, Schema, UiSchema, UiTextItem, UiPasswordItem, Context, UiButton, 
 import { defaultLoginTop, getSender } from './tools';
 import { CLogin } from './CLogin';
 import { VPage } from '../vm';
-import { tonva } from 'tonwa-core';
+import { tonwa } from 'tonwa-core';
 
 const schema: Schema = [
 	{ name: 'username', type: 'string', required: true, maxLength: 100 } as StringSchema,
@@ -58,7 +58,7 @@ export class VLogin extends VPage<CLogin> {
 		return <div className="d-flex p-5 flex-column justify-content-center align-items-center">
 			<div className="flex-fill" />
 			<div className="w-20c">
-				{this.tonva.loginTop(defaultLoginTop)}
+				{this.tonwa.loginTop(defaultLoginTop)}
 				<div className="h-2c" />
 				<Form schema={schema} uiSchema={this.uiSchema}
 					onButtonClick={this.onSubmit}
@@ -72,7 +72,7 @@ export class VLogin extends VPage<CLogin> {
 						注册账号
 					</Ax>
 				</div>
-				{tonva.privacyEntry()}
+				{tonwa.privacyEntry()}
 			</div>
 			<div className="flex-fill" />
 			<div className="flex-fill" />

@@ -60,12 +60,12 @@ var uq_1 = require("../uq");
 var ui_1 = require("../ui");
 var CAppBase = /** @class */ (function (_super) {
     __extends(CAppBase, _super);
-    function CAppBase(tonva, config) {
-        var _this = _super.call(this, tonva) || this;
+    function CAppBase(tonwa, config) {
+        var _this = _super.call(this, tonwa) || this;
         _this.uqsUser = '';
-        _this.web = tonva.web;
-        //this.nav = new Nav(tonva); // nav;
-        _this.appConfig = config || tonva.navSettings;
+        _this.web = tonwa.web;
+        //this.nav = new Nav(tonwa); // nav;
+        _this.appConfig = config || tonwa.navSettings;
         if (_this.appConfig) {
             var _a = _this.appConfig, app = _a.app, uqs = _a.uqs;
             if (app === undefined && uqs === undefined) {
@@ -94,12 +94,12 @@ var CAppBase = /** @class */ (function (_super) {
                     case 0:
                         if (!this.appConfig)
                             return [2 /*return*/];
-                        user = this.tonva.user;
+                        user = this.tonwa.user;
                         if (user === this.uqsUser)
                             return [2 /*return*/];
                         this.uqsUser = user;
                         this.web.logoutApis();
-                        uqsLoader = new tonwa_core_1.UQsLoader(this.tonva, this.appConfig);
+                        uqsLoader = new tonwa_core_1.UQsLoader(this.tonwa, this.appConfig);
                         return [4 /*yield*/, uqsLoader.build()];
                     case 1:
                         retErrors = _a.sent();
@@ -140,8 +140,8 @@ var CAppBase = /** @class */ (function (_super) {
         return __awaiter(this, void 0, void 0, function () {
             var _this = this;
             return __generator(this, function (_a) {
-                this.tonva.resolveRoute();
-                this.tonva.onChangeLogin = function (user) { return _this.onChangeLogin(user); };
+                this.tonwa.resolveRoute();
+                this.tonwa.onChangeLogin = function (user) { return _this.onChangeLogin(user); };
                 this.onChangeLogin(this.user);
                 return [2 /*return*/];
             });
@@ -162,7 +162,7 @@ var CAppBase = /** @class */ (function (_super) {
         for (var _i = 0; _i < arguments.length; _i++) {
             args[_i] = arguments[_i];
         }
-        return this.tonva.on(args[0], args[1], args[2]);
+        return this.tonwa.on(args[0], args[1], args[2]);
     };
     CAppBase.prototype.onNavRoutes = function () { return; };
     CAppBase.prototype.getUqRoles = function (uqName) {
@@ -171,7 +171,7 @@ var CAppBase = /** @class */ (function (_super) {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        user = this.tonva.user;
+                        user = this.tonwa.user;
                         if (!user)
                             return [2 /*return*/, null];
                         userRoles = user.roles;
@@ -186,7 +186,7 @@ var CAppBase = /** @class */ (function (_super) {
                         roles = _a.sent();
                         if (!roles)
                             roles = null;
-                        this.tonva.setUqRoles(uq, roles);
+                        this.tonwa.setUqRoles(uq, roles);
                         return [2 /*return*/, roles];
                 }
             });

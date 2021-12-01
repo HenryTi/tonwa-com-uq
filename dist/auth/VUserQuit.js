@@ -197,7 +197,7 @@ var VQuitDone = /** @class */ (function (_super) {
         configurable: true
     });
     VQuitDone.prototype.onClickButton1 = function () {
-        this.tonva.logout();
+        this.tonwa.logout();
     };
     return VQuitDone;
 }(VUserQuitBase));

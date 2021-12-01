@@ -4,7 +4,7 @@ import { makeObservable, observable } from 'mobx';
 import { Image } from '../image';
 import { Edit } from './edit';
 import { FieldRule } from '../inputRules';
-import { tonva } from 'tonwa-core';
+import { tonwa } from 'tonwa-core';
 
 export abstract class ItemEdit {
     protected edit: Edit;
@@ -97,7 +97,7 @@ export abstract class ItemEdit {
         return divValue;
     }
 
-    protected async internalEnd(): Promise<void> { tonva.nav.pop(1) }
+    protected async internalEnd(): Promise<void> { tonwa.nav.pop(1) }
 
     protected verifyValue() {
         if (this.uiItem === undefined) return;

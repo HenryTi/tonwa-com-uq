@@ -2,7 +2,7 @@ import { VPage } from '../vm';
 import { Page, Form, ItemSchema, UiSchema, StringSchema, UiPasswordItem, Context, ButtonSchema, UiButton } from '../components';
 //import { CenterAppApi } from '../net';
 import { CLogin } from './CLogin';
-import { tonva } from 'tonwa-core';
+import { tonwa } from 'tonwa-core';
 
 export class VChangePassword extends VPage<CLogin> {
     private schema: ItemSchema[] = [
@@ -54,7 +54,7 @@ export class VChangePassword extends VPage<CLogin> {
             context.setError('orgPassword', '原密码错误');
             return;
         }
-        tonva.nav.replace(<Page header="修改密码" back="close">
+        tonwa.nav.replace(<Page header="修改密码" back="close">
             <div className="m-3  text-success">
                 密码修改成功！
             </div>

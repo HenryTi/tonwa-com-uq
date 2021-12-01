@@ -4,14 +4,14 @@ import { UiSelect } from '../schema';
 import { Page } from '../page/page';
 import { observer } from 'mobx-react';
 import { ItemEdit } from './itemEdit';
-import { tonva } from 'tonwa-core';
+import { tonwa } from 'tonwa-core';
 
 export class SelectItemEdit extends ItemEdit {
     get uiItem(): UiSelect { return this._uiItem as UiSelect }
     protected async internalStart(): Promise<any> {
         return new Promise<any>((resolve, reject) => {
             let element = React.createElement(this.page, { resolve: resolve, reject: reject });
-            tonva.nav.push(element, reject);
+            tonwa.nav.push(element, reject);
         });
     }
 

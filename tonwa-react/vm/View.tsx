@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { observer } from 'mobx-react';
 import { Page } from '../components';
-import { env, Nav, Tonva } from 'tonwa-core';
+import { env, Nav, Tonwa } from 'tonwa-core';
 import { Controller } from './Controller';
 import { VPage } from './VPage';
 
 export abstract class View<C extends Controller> {
-    protected readonly tonva: Tonva;
+    protected readonly tonwa: Tonwa;
     protected readonly controller: C;
     protected readonly nav: Nav;
     protected readonly res: any;
@@ -14,16 +14,16 @@ export abstract class View<C extends Controller> {
     protected readonly t: (str: string) => any;
 
     constructor(controller: C) {
-        let tonva = controller.getTonva();
-        this.tonva = tonva;
+        let tonwa = controller.getTonwa();
+        this.tonwa = tonwa;
         this.controller = controller;
-        this.nav = tonva.nav;
+        this.nav = tonwa.nav;
         this.t = controller.t;
     }
 
     protected get isDev() { return env.isDevelopment }
     get isWebNav(): boolean { return this.nav.isWebNav }
-    navigate(url: string) { this.tonva.navigate(url) }
+    navigate(url: string) { this.tonwa.navigate(url) }
     //protected isMe(id:any) {return this.controller.isMe(id)}
     abstract render(param?: any): JSX.Element;
 

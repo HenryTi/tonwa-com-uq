@@ -45,7 +45,7 @@ function startPage(CApp, appConfig) {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    tonwa_core_1.tonva.setSettings(appConfig);
+                    tonwa_core_1.tonwa.setSettings(appConfig);
                     cApp = new CApp(appConfig);
                     cApp.internalInit();
                     return [4 /*yield*/, cApp.start()];

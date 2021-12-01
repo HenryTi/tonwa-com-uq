@@ -1,3 +1,4 @@
+/// <reference types="react" />
 import { /*ParamActDetail, ParamActDetail2, ParamActDetail3, ParamActIX
     , ParamActIXSort, ParamID, ParamIDDetailGet, ParamIDinIX, ParamIDLog
     , ParamIDNO, ParamIDSum, ParamIDTree, ParamIDxID, ParamIX, ParamKeyID

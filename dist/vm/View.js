@@ -74,10 +74,10 @@ var components_1 = require("../components");
 var tonwa_core_1 = require("tonwa-core");
 var View = /** @class */ (function () {
     function View(controller) {
-        var tonva = controller.getTonva();
-        this.tonva = tonva;
+        var tonwa = controller.getTonwa();
+        this.tonwa = tonwa;
         this.controller = controller;
-        this.nav = tonva.nav;
+        this.nav = tonwa.nav;
         this.t = controller.t;
     }
     Object.defineProperty(View.prototype, "isDev", {
@@ -90,7 +90,7 @@ var View = /** @class */ (function () {
         enumerable: false,
         configurable: true
     });
-    View.prototype.navigate = function (url) { this.tonva.navigate(url); };
+    View.prototype.navigate = function (url) { this.tonwa.navigate(url); };
     View.prototype.react = function (func) {
         var V = (0, mobx_react_1.observer)(func.bind(this));
         return (0, jsx_runtime_1.jsx)(V, {}, void 0);

@@ -111,7 +111,7 @@ var EditMeInfo = /** @class */ (function (_super) {
         (0, mobx_1.makeObservable)(_this, {
             data: mobx_1.observable,
         });
-        var _a = tonwa_core_1.tonva.user, nick = _a.nick, icon = _a.icon;
+        var _a = tonwa_core_1.tonwa.user, nick = _a.nick, icon = _a.icon;
         _this.data = {
             nick: nick,
             icon: icon,

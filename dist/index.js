@@ -24,5 +24,5 @@ __exportStar(require("./views"), exports);
 __exportStar(require("./tool"), exports);
 __exportStar(require("./ui"), exports);
 __exportStar(require("./uq"), exports);
-__exportStar(require("./TonvaReact"), exports);
+__exportStar(require("./TonwaReact"), exports);
 //# sourceMappingURL=index.js.map

@@ -1,11 +1,11 @@
-import { env, resOptions, PageHeaderProps, PageWebNav, Tonva, Nav } from 'tonwa-core';
+import { env, resOptions, PageHeaderProps, PageWebNav, Tonwa, Nav } from 'tonwa-core';
 import { t } from '../ui';
 import { Page } from '../components';
 //import { nav } from '../nav';
 import { VPage } from './VPage';
 import { View } from './View';
 import { AnnotationsMap, makeObservable, observable, runInAction } from 'mobx';
-// import { messageHub } from 'tonva-core';
+// import { messageHub } from 'tonwa-core';
 
 export interface ConfirmOptions {
     caption?: string;
@@ -25,7 +25,7 @@ export interface WebNav<C extends Controller> {
 }
 
 export abstract class Controller {
-    protected readonly tonva: Tonva;
+    protected readonly tonwa: Tonwa;
     protected nav: Nav;
     protected res: any = {};
     t = (str: string): string | JSX.Element => this.internalT(str) || str;
@@ -34,9 +34,9 @@ export abstract class Controller {
     readonly isDev: boolean = env.isDevelopment;
     pageWebNav: PageWebNav<JSX.Element>;
 
-    constructor(tonva: Tonva) {
-        this.tonva = tonva;
-        this.nav = tonva.nav;
+    constructor(tonwa: Tonwa) {
+        this.tonwa = tonwa;
+        this.nav = tonwa.nav;
     }
 
     shallow<T extends object>(data: T) {
@@ -70,7 +70,7 @@ export abstract class Controller {
         return runInAction(fn);
     }
 
-    getTonva() { return this.tonva; }
+    getTonwa() { return this.tonwa; }
 
     protected beforeInit() { }
     protected afterInit() { }

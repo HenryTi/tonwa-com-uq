@@ -76,7 +76,7 @@ var tonwa_core_1 = require("tonwa-core");
 var CStringEdit = /** @class */ (function (_super) {
     __extends(CStringEdit, _super);
     function CStringEdit() {
-        var _this = _super.call(this, tonwa_core_1.tonva) || this;
+        var _this = _super.call(this, tonwa_core_1.tonwa) || this;
         _this.props = {
             label: '编辑'
         };

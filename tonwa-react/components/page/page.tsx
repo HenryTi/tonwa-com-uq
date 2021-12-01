@@ -3,7 +3,7 @@ import { observer } from 'mobx-react';
 import { renderPageHeader } from './pageHeader';
 import { TabsProps, TabsView } from './tabs';
 import { ScrollProps, ScrollView, WebNavScrollView } from './scrollView';
-import { PageHeaderProps, PageWebNav, tonva } from 'tonwa-core';
+import { PageHeaderProps, PageWebNav, tonwa } from 'tonwa-core';
 //import { nav } from '../../nav';
 
 export interface IVPage {
@@ -95,7 +95,7 @@ export class Page extends React.Component<PageProps> {
 		const { onScroll, onScrollTop, onScrollBottom, children, className, webNav } = this.props;
 		let pageWebNav: PageWebNav;
 		if (!webNav) {
-			pageWebNav = tonva.nav.pageWebNav;
+			pageWebNav = tonwa.nav.pageWebNav;
 		}
 		else {
 			pageWebNav = webNav;

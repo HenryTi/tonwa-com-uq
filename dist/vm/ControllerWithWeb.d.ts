@@ -1,9 +1,9 @@
-import { Tonva, User, Web } from "tonwa-core";
+import { Tonwa, User, Web } from "tonwa-core";
 import { VPage } from "./VPage";
 import { Controller, WebNav } from "./Controller";
 export declare abstract class ControllerWithWeb extends Controller {
     readonly web: Web;
-    constructor(tonva: Tonva);
+    constructor(tonwa: Tonwa);
     private receiveHandlerId;
     protected dispose: () => void;
     protected onDispose(): void;

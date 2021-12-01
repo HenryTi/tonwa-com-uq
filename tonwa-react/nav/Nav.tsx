@@ -1,5 +1,5 @@
 import { makeObservable, observable } from 'mobx';
-import { Navigo, RouteFunc, Hooks, NamedRoute, Web, resOptions, Tonva, Login } from 'tonwa-core';
+import { Navigo, RouteFunc, Hooks, NamedRoute, Web, resOptions, Tonwa, Login } from 'tonwa-core';
 import { Page } from '../components';
 
 import 'font-awesome/css/font-awesome.min.css';
@@ -9,15 +9,15 @@ import '../css/animation.css';
 import { ReloadPage, ConfirmReloadPage } from '../components/reloadPage';
 //import { PageWebNav } from '../components/page';
 import { createLogin, showForget, showRegister } from '../components/login';
-//import { env, FetchError, LocalData, User } from 'tonva-core';
+//import { env, FetchError, LocalData, User } from 'tonwa-core';
 import { SystemNotifyPage } from './FetchErrorView';
 
 import { User, Guest } from 'tonwa-core';
-//import { netToken } from 'tonva-core';
+//import { netToken } from 'tonwa-core';
 import { FetchError } from 'tonwa-core';
 import { LocalData, env } from 'tonwa-core';
-//import {guestApi, logoutApis, setCenterUrl, setCenterToken, host, resUrlFromHost, messageHub} from 'tonva-core';
-//import { userApi } from 'tonva-core';
+//import {guestApi, logoutApis, setCenterUrl, setCenterToken, host, resUrlFromHost, messageHub} from 'tonwa-core';
+//import { userApi } from 'tonwa-core';
 import { NavView } from './NavView';
 
 export type NavPage = (params: any) => Promise<void>;
@@ -32,7 +32,7 @@ export interface NavSettings {
 let logMark: number;
 const logs: string[] = [];
 export class Nav {
-    private readonly tonva: Tonva;
+    private readonly tonwa: Tonwa;
     private readonly web: Web;
     private navView: NavView;
     private wsHost: string;
@@ -45,11 +45,11 @@ export class Nav {
     culture: string;
     resUrl: string;
 
-    constructor(tonva: Tonva) {
+    constructor(tonwa: Tonwa) {
         makeObservable(this, {
             user: observable,
         });
-        this.web = tonva.web;
+        this.web = tonwa.web;
         let { lang, district } = resOptions;
         this.language = lang;
         this.culture = district;
@@ -543,14 +543,14 @@ export class Nav {
     }
 
     private createLogin = createLogin;
-    setCreateLogin(createLogin: (tonva: Tonva) => Promise<Login>) {
+    setCreateLogin(createLogin: (tonwa: Tonwa) => Promise<Login>) {
         this.createLogin = createLogin;
     }
 
     private login: Login;
     private async getLogin(): Promise<Login> {
         if (this.login) return this.login;
-        return this.login = await this.createLogin(this.tonva);
+        return this.login = await this.createLogin(this.tonwa);
     }
     async showLogin(callback?: (user: User) => Promise<void>, withBack?: boolean) {
         let login = await this.getLogin();
@@ -563,11 +563,11 @@ export class Nav {
     }
 
     async showRegister() {
-        showRegister(this.tonva);
+        showRegister(this.tonwa);
     }
 
     async showForget() {
-        showForget(this.tonva);
+        showForget(this.tonwa);
     }
 
     async logout(callback?: () => Promise<void>) { //notShowLogin?:boolean) {

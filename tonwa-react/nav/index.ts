@@ -1,11 +1,11 @@
-//import { Tonva } from 'tonva-core';
+//import { Tonwa } from 'tonwa-core';
 //import { Nav } from './Nav';
 //import { NavView } from './NavView';
 
 /*
 export let nav: Nav; // = new Nav();
-export function initNav(tonva: Tonva) {
-    nav = new Nav(tonva);
+export function initNav(tonwa: Tonwa) {
+    nav = new Nav(tonwa);
 }
 export * from './Nav';
 */

@@ -66,19 +66,19 @@ var CRegBase = /** @class */ (function (_super) {
             var retUser;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.web.userApi.login({ user: account || this.account, pwd: this.password, guest: this.tonva.guest })];
+                    case 0: return [4 /*yield*/, this.web.userApi.login({ user: account || this.account, pwd: this.password, guest: this.tonwa.guest })];
                     case 1:
                         retUser = _a.sent();
                         if (retUser === undefined) {
                             alert('something wrong!');
                             return [2 /*return*/];
                         }
-                        return [4 /*yield*/, this.tonva.userLogined(retUser)];
+                        return [4 /*yield*/, this.tonwa.userLogined(retUser)];
                     case 2:
                         _a.sent();
                         //await nav.start();
                         if (this.isWebNav)
-                            this.tonva.navigate('/');
+                            this.tonwa.navigate('/');
                         return [2 /*return*/];
                 }
             });
@@ -136,7 +136,7 @@ var CRegBase = /** @class */ (function (_super) {
                         error = this.accountError(ret);
                         if (error !== undefined)
                             return [2 /*return*/, error];
-                        return [4 /*yield*/, this.web.userApi.sendVerify(this.account, this.type, this.tonva.oem)];
+                        return [4 /*yield*/, this.web.userApi.sendVerify(this.account, this.type, this.tonwa.oem)];
                     case 2:
                         ret = _a.sent();
                         this.toVerify();
@@ -204,7 +204,7 @@ var CRegister = /** @class */ (function (_super) {
                     case 1:
                         ret = _a.sent();
                         if (ret === 0) {
-                            this.tonva.nav.clear();
+                            this.tonwa.nav.clear();
                             this.toSuccess();
                             return [2 /*return*/];
                         }
@@ -276,7 +276,7 @@ var CForget = /** @class */ (function (_super) {
                             console.log(err);
                             throw err;
                         }
-                        this.tonva.nav.clear();
+                        this.tonwa.nav.clear();
                         this.toSuccess();
                         return [2 /*return*/];
                 }

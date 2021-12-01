@@ -14,12 +14,12 @@ export class CLogin extends ControllerWithWeb implements Login {
 			let user = await this.web.userApi.login({
 				user: un,
 				pwd: pwd,
-				guest: this.tonva.guest,
+				guest: this.tonwa.guest,
 			});
 
 			if (user === undefined) return false;
 			console.log("onLoginSubmit: user=%s pwd:%s", user.name, user.token);
-			await this.tonva.userLogined(user, callback);
+			await this.tonwa.userLogined(user, callback);
 			return true;
 		}
 		this.openVPage(VLogin, { onLogin, withBack });
@@ -27,7 +27,7 @@ export class CLogin extends ControllerWithWeb implements Login {
 
 	async showLogout(callback?: () => Promise<void>) {
 		this.openVPage(VLogout, () => {
-			this.tonva.logout(callback);
+			this.tonwa.logout(callback);
 		});
 	}
 	/*

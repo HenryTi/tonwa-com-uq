@@ -1,4 +1,4 @@
-import { /*centerApi, logoutApis, */AppConfig as AppConfigCore, Tonva, Web } from "tonwa-core";
+import { /*centerApi, logoutApis, */AppConfig as AppConfigCore, Tonwa, Web } from "tonwa-core";
 import { User, UqsConfig as UqsConfigCore } from 'tonwa-core';
 import { RouteFunc, Hooks, Navigo, NamedRoute } from "tonwa-core";
 import { UQsLoader, UQsMan } from "tonwa-core";
@@ -69,11 +69,11 @@ export abstract class CAppBase<U> extends ControllerWithWeb {
 	timezone: number;
 	unitTimezone: number;
 
-	constructor(tonva: Tonva, config?: AppConfig) {
-		super(tonva);
-		this.web = tonva.web;
-		//this.nav = new Nav(tonva); // nav;
-		this.appConfig = config || (tonva.navSettings as AppConfig);
+	constructor(tonwa: Tonwa, config?: AppConfig) {
+		super(tonwa);
+		this.web = tonwa.web;
+		//this.nav = new Nav(tonwa); // nav;
+		this.appConfig = config || (tonwa.navSettings as AppConfig);
 		if (this.appConfig) {
 			let { app, uqs } = this.appConfig;
 			if (app === undefined && uqs === undefined) {
@@ -96,11 +96,11 @@ export abstract class CAppBase<U> extends ControllerWithWeb {
 	private uqsUser: any = '';
 	protected async initUQs(): Promise<any> {
 		if (!this.appConfig) return;
-		let { user } = this.tonva;
+		let { user } = this.tonwa;
 		if (user === this.uqsUser) return;
 		this.uqsUser = user;
 		this.web.logoutApis();
-		let uqsLoader = new UQsLoader(this.tonva, this.appConfig);
+		let uqsLoader = new UQsLoader(this.tonwa, this.appConfig);
 		let retErrors = await uqsLoader.build();
 		this.uqsMan = uqsLoader.uqsMan;
 		this._uqs = createUQsProxy(uqsLoader.uqsMan) as any; //  this.uqsMan.proxy;
@@ -124,8 +124,8 @@ export abstract class CAppBase<U> extends ControllerWithWeb {
 		}
 	}
 	protected async afterStart(): Promise<void> {
-		this.tonva.resolveRoute();
-		this.tonva.onChangeLogin = (user: User) => this.onChangeLogin(user);
+		this.tonwa.resolveRoute();
+		this.tonwa.onChangeLogin = (user: User) => this.onChangeLogin(user);
 		this.onChangeLogin(this.user);
 	}
 
@@ -138,13 +138,13 @@ export abstract class CAppBase<U> extends ControllerWithWeb {
 	protected on(regex: RegExp, routeFunc: RouteFunc, hooks?: Hooks): Navigo;
 	protected on(options: { [url: string]: RouteFunc | NamedRoute }): Navigo;
 	protected on(...args: any[]): Navigo {
-		return this.tonva.on(args[0], args[1], args[2]);
+		return this.tonwa.on(args[0], args[1], args[2]);
 	}
 
 	protected onNavRoutes() { return; }
 
 	async getUqRoles(uqName: string): Promise<string[]> {
-		let { user } = this.tonva;
+		let { user } = this.tonwa;
 		if (!user) return null;
 		let { roles: userRoles } = user;
 		let uq = uqName.toLowerCase();
@@ -156,7 +156,7 @@ export abstract class CAppBase<U> extends ControllerWithWeb {
 
 		roles = await this.uqsMan.getUqUserRoles(uq);
 		if (!roles) roles = null;
-		this.tonva.setUqRoles(uq, roles);
+		this.tonwa.setUqRoles(uq, roles);
 		return roles;
 	}
 

@@ -92,7 +92,7 @@ function renderPageHeader(props, inWebNav) {
         var afterBack;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, tonwa_core_1.tonva.nav.back(false)];
+                case 0: return [4 /*yield*/, tonwa_core_1.tonwa.nav.back(false)];
                 case 1:
                     _a.sent(); // 这个才会显示confirm box，在dataForm里面，如果输入了数据的话
                     afterBack = props.afterBack;
@@ -114,16 +114,16 @@ function renderPageHeader(props, inWebNav) {
                     case 1:
                         _a.sent();
                         _a.label = 2;
-                    case 2: return [4 /*yield*/, tonwa_core_1.tonva.logout(undefined)];
+                    case 2: return [4 /*yield*/, tonwa_core_1.tonwa.logout(undefined)];
                     case 3:
                         _a.sent();
                         return [2 /*return*/];
                 }
             });
         }); };
-        tonwa_core_1.tonva.showLogout(logout);
+        tonwa_core_1.tonwa.showLogout(logout);
     };
-    var b = tonwa_core_1.tonva.nav.level > 1 || window.self !== window.top;
+    var b = tonwa_core_1.tonwa.nav.level > 1 || window.self !== window.top;
     var back = props.back, right = props.right, center = props.center, logout = props.logout, className = props.className, ex = props.ex;
     if (inWebNav === true && !back && !right && !center)
         return;
@@ -131,7 +131,7 @@ function renderPageHeader(props, inWebNav) {
     if (logout !== undefined && window.self === window.top) {
         if ((typeof logout === 'boolean' && logout === true)
             || typeof logout === 'function') {
-            var user = tonwa_core_1.tonva.user;
+            var user = tonwa_core_1.tonwa.user;
             if (user !== undefined) {
                 var nick = user.nick, name_1 = user.name;
                 debugLogout = (0, jsx_runtime_1.jsxs)("div", __assign({ className: "d-flex align-items-center" }, { children: [(0, jsx_runtime_1.jsx)("small", __assign({ className: "text-light" }, { children: nick || name_1 }), void 0), 
@@ -147,10 +147,10 @@ function renderPageHeader(props, inWebNav) {
                 break;
             default:
             case 'back':
-                vBack = (0, jsx_runtime_1.jsx)("nav", __assign({ onClick: onBack }, { children: tonwa_core_1.tonva.nav.backIcon }), void 0);
+                vBack = (0, jsx_runtime_1.jsx)("nav", __assign({ onClick: onBack }, { children: tonwa_core_1.tonwa.nav.backIcon }), void 0);
                 break;
             case 'close':
-                vBack = (0, jsx_runtime_1.jsx)("nav", __assign({ onClick: onBack }, { children: tonwa_core_1.tonva.nav.closeIcon }), void 0);
+                vBack = (0, jsx_runtime_1.jsx)("nav", __assign({ onClick: onBack }, { children: tonwa_core_1.tonwa.nav.closeIcon }), void 0);
                 break;
         }
     }

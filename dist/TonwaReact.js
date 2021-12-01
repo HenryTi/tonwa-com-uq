@@ -62,7 +62,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TonvaReact = void 0;
+exports.TonwaReact = void 0;
 var jsx_runtime_1 = require("react/jsx-runtime");
 var mobx_1 = require("mobx");
 var tonwa_core_1 = require("tonwa-core");
@@ -76,9 +76,9 @@ var reloadPage_1 = require("./components/reloadPage");
 var login_1 = require("./components/login");
 var FetchErrorView_1 = require("./nav/FetchErrorView");
 var nav_1 = require("./nav");
-var TonvaReact = /** @class */ (function (_super) {
-    __extends(TonvaReact, _super);
-    function TonvaReact() {
+var TonwaReact = /** @class */ (function (_super) {
+    __extends(TonwaReact, _super);
+    function TonwaReact() {
         var _this = _super.call(this) || this;
         _this.showPrivacyPage = function () {
             var privacy = _this.getPrivacyContent();
@@ -118,21 +118,21 @@ var TonvaReact = /** @class */ (function (_super) {
         _this.setCreateLogin(login_1.createLogin);
         return _this;
     }
-    TonvaReact.prototype.createWeb = function () { return new app_1.WebReact(); };
-    TonvaReact.prototype.createObservableMap = function () {
+    TonwaReact.prototype.createWeb = function () { return new app_1.WebReact(); };
+    TonwaReact.prototype.createObservableMap = function () {
         return mobx_1.observable.map({}, { deep: false });
     };
-    TonvaReact.prototype.set = function (navView) {
+    TonwaReact.prototype.set = function (navView) {
         //this.logo = logo;
         this.navView = navView;
     };
-    Object.defineProperty(TonvaReact.prototype, "nav", {
+    Object.defineProperty(TonwaReact.prototype, "nav", {
         get: function () { return this.navView; },
         enumerable: false,
         configurable: true
     });
     ;
-    TonvaReact.prototype.renderNavView = function (onLogined, notLogined, userPassword) {
+    TonwaReact.prototype.renderNavView = function (onLogined, notLogined, userPassword) {
         var _this = this;
         return (0, jsx_runtime_1.jsx)(nav_1.NavView, { ref: function (nv) { return _this.navView = nv; }, onLogined: onLogined, notLogined: notLogined, userPassword: userPassword }, void 0);
     };
@@ -144,7 +144,7 @@ var TonvaReact = /** @class */ (function (_super) {
     }
     */
     // pageWebNav: PageWebNav;
-    TonvaReact.prototype.showAppView = function (isUserLogin) {
+    TonwaReact.prototype.showAppView = function (isUserLogin) {
         return __awaiter(this, void 0, void 0, function () {
             var onLogined;
             return __generator(this, function (_a) {
@@ -164,18 +164,18 @@ var TonvaReact = /** @class */ (function (_super) {
             });
         });
     };
-    TonvaReact.prototype.privacyEntry = function () {
+    TonwaReact.prototype.privacyEntry = function () {
         if (!this.getPrivacyContent())
             return;
         return (0, jsx_runtime_1.jsx)("div", __assign({ className: "text-center" }, { children: (0, jsx_runtime_1.jsx)("button", __assign({ className: "btn btn-sm btn-link", onClick: this.showPrivacyPage }, { children: (0, jsx_runtime_1.jsx)("small", __assign({ className: "text-muted" }, { children: "\u9690\u79C1\u653F\u7B56" }), void 0) }), void 0) }), void 0);
     };
-    TonvaReact.prototype.getPrivacyContent = function () {
+    TonwaReact.prototype.getPrivacyContent = function () {
         if (!this.navSettings)
             return;
         var privacy = this.navSettings.privacy;
         return privacy;
     };
-    TonvaReact.prototype.showRegister = function () {
+    TonwaReact.prototype.showRegister = function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 (0, login_1.showRegister)(this);
@@ -183,7 +183,7 @@ var TonvaReact = /** @class */ (function (_super) {
             });
         });
     };
-    TonvaReact.prototype.showForget = function () {
+    TonwaReact.prototype.showForget = function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 (0, login_1.showForget)(this);
@@ -191,11 +191,11 @@ var TonvaReact = /** @class */ (function (_super) {
             });
         });
     };
-    TonvaReact.prototype.showReloadPage = function (msg) {
+    TonwaReact.prototype.showReloadPage = function (msg) {
         var seconds = -1;
         this.navView.push((0, jsx_runtime_1.jsx)(reloadPage_1.ReloadPage, { message: msg, seconds: seconds }, void 0));
     };
-    TonvaReact.prototype.onError = function (fetchError) {
+    TonwaReact.prototype.onError = function (fetchError) {
         return __awaiter(this, void 0, void 0, function () {
             var err, _a;
             return __generator(this, function (_b) {
@@ -233,7 +233,7 @@ var TonvaReact = /** @class */ (function (_super) {
             });
         });
     };
-    TonvaReact.prototype.showUpgradeUq = function (uq, version) {
+    TonwaReact.prototype.showUpgradeUq = function (uq, version) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 this.navView.show((0, jsx_runtime_1.jsx)(components_1.Page, __assign({ header: false }, { children: (0, jsx_runtime_1.jsxs)("div", { children: ["UQ\u5347\u7EA7\u4E86\uFF0C\u8BF7\u70B9\u51FB\u6309\u94AE\u5347\u7EA7 ", (0, jsx_runtime_1.jsx)("br", {}, void 0), (0, jsx_runtime_1.jsxs)("small", __assign({ className: "text-muted" }, { children: [uq, " ver-", version] }), void 0), (0, jsx_runtime_1.jsx)("button", __assign({ className: "btn btn-primary", onClick: this.upgradeUq }, { children: "\u5347\u7EA7" }), void 0)] }, void 0) }), void 0));
@@ -241,7 +241,7 @@ var TonvaReact = /** @class */ (function (_super) {
             });
         });
     };
-    return TonvaReact;
+    return TonwaReact;
 }(tonwa_core_1.Tonwa));
-exports.TonvaReact = TonvaReact;
-//# sourceMappingURL=TonvaReact.js.map
+exports.TonwaReact = TonwaReact;
+//# sourceMappingURL=TonwaReact.js.map

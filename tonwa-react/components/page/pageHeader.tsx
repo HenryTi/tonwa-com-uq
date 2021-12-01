@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { PageHeaderProps, tonva } from 'tonwa-core';
+import { PageHeaderProps, tonwa } from 'tonwa-core';
 //import {nav} from '../../nav';
 
 export function renderPageHeader(props: PageHeaderProps<JSX.Element>, inWebNav?: boolean) {
 	let onBack = async () => {
-		await tonva.nav.back(false); // 这个才会显示confirm box，在dataForm里面，如果输入了数据的话
+		await tonwa.nav.back(false); // 这个才会显示confirm box，在dataForm里面，如果输入了数据的话
 		let { afterBack } = props;
 		if (afterBack) afterBack();
 	}
@@ -14,19 +14,19 @@ export function renderPageHeader(props: PageHeaderProps<JSX.Element>, inWebNav?:
 			if (typeof logout === 'function') {
 				await logout();
 			}
-			await tonva.logout(undefined);
+			await tonwa.logout(undefined);
 		}
-		tonva.showLogout(logout);
+		tonwa.showLogout(logout);
 	}
 
-	let b = tonva.nav.level > 1 || window.self !== window.top;
+	let b = tonwa.nav.level > 1 || window.self !== window.top;
 	let { back, right, center, logout, className, ex } = props;
 	if (inWebNav === true && !back && !right && !center) return;
 	let vBack: any, debugLogout: any;
 	if (logout !== undefined && window.self === window.top) {
 		if ((typeof logout === 'boolean' && logout === true)
 			|| typeof logout === 'function') {
-			let { user } = tonva;
+			let { user } = tonwa;
 			if (user !== undefined) {
 				let { nick, name } = user;
 				debugLogout = <div className="d-flex align-items-center">
@@ -50,10 +50,10 @@ export function renderPageHeader(props: PageHeaderProps<JSX.Element>, inWebNav?:
 				break;
 			default:
 			case 'back':
-				vBack = <nav onClick={onBack}>{tonva.nav.backIcon}</nav>;
+				vBack = <nav onClick={onBack}>{tonwa.nav.backIcon}</nav>;
 				break;
 			case 'close':
-				vBack = <nav onClick={onBack}>{tonva.nav.closeIcon}</nav>;
+				vBack = <nav onClick={onBack}>{tonwa.nav.closeIcon}</nav>;
 				break;
 		}
 	}

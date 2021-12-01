@@ -1,12 +1,12 @@
-import { Tonva, User, Web } from "tonwa-core";
+import { Tonwa, User, Web } from "tonwa-core";
 import { VPage } from "./VPage";
 import { Controller, WebNav } from "./Controller";
 
 export abstract class ControllerWithWeb extends Controller {
     readonly web: Web;
-    constructor(tonva: Tonva) {
-        super(tonva);
-        this.web = tonva.web;
+    constructor(tonwa: Tonwa) {
+        super(tonwa);
+        this.web = tonwa.web;
     }
 
     private receiveHandlerId: number;
@@ -26,9 +26,9 @@ export abstract class ControllerWithWeb extends Controller {
         return;
     }
 
-    get user(): User { return this.tonva.user }
+    get user(): User { return this.tonwa.user }
     get isLogined(): boolean {
-        let { user } = this.tonva;
+        let { user } = this.tonwa;
         if (!user) return false;
         return user.id > 0;
     }

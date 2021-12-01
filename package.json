@@ -1,6 +1,6 @@
 {
   "name": "tonwa-react",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "tonwa react client libs",
   "private": false,
   "main": "dist/index.js",
@@ -36,7 +36,7 @@
     "mobx-react": "^7.2.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "tonwa-core": "^0.1.0",
+    "tonwa-core": "^1.0.0",
     "typescript": "^3.9.7"
   }
 }
