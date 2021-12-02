@@ -1,4 +1,3 @@
-/// <reference types="react" />
 import { ListBase } from './base';
 import { List } from './index';
 export interface SelectableItem {
