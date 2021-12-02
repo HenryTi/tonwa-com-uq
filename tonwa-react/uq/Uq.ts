@@ -1,16 +1,15 @@
 import { observer } from "mobx-react";
 import React from "react";
-import { /*ParamActDetail, ParamActDetail2, ParamActDetail3, ParamActIX
-    , ParamActIXSort, ParamID, ParamIDDetailGet, ParamIDinIX, ParamIDLog
-    , ParamIDNO, ParamIDSum, ParamIDTree, ParamIDxID, ParamIX, ParamKeyID
-    , ParamKeyIX, ParamQueryID, RetActDetail, RetActDetail2, RetActDetail3
-    , Uq, */UqMan
+import {
+	UqMan, Uq as UqCore
 } from "tonwa-core";
 
 export class Uq {
 	private $_uqMan: UqMan;
+	private $_uqSql: UqCore;
 	constructor(uqMan: UqMan) {
 		this.$_uqMan = uqMan;
+		this.$_uqSql = this.$_createUqSqlProxy();
 	}
 
 	$_createProxy() {
@@ -19,6 +18,9 @@ export class Uq {
 				let lk = (key as string).toLowerCase();
 				if (lk === '$') {
 					return this;
+				}
+				if (lk === 'SQL') {
+					return this.$_uqSql;
 				}
 				let ret = target[lk];
 				if (ret !== undefined) return ret;
@@ -30,9 +32,22 @@ export class Uq {
 				return undefined;
 			}
 		});
-		//this.proxy = ret;
-		//this.idCache = new IDCache(this.proxy);
 		return ret;
+	}
+
+	private $_createUqSqlProxy(): UqCore {
+		let ret = new Proxy(this.$_uqMan, {
+			get: (target, key, receiver) => {
+				let lk = (key as string).toLowerCase();
+				let ret = (target as any)['$' + lk];
+				if (ret !== undefined) return ret;
+				let err = `entity ${this.$_uqMan.name}.${String(lk)} not defined`;
+				console.error('UQ错误：' + err);
+				this.showReload('服务器正在更新');
+				return undefined;
+			}
+		});
+		return ret as unknown as UqCore;
 	}
 
 	private showReload(msg: string) {

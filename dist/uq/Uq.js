@@ -45,6 +45,7 @@ var Uq = /** @class */ (function () {
             return _this.IDRender(-id, render);
         };
         this.$_uqMan = uqMan;
+        this.$_uqSql = this.$_createUqSqlProxy();
     }
     Uq.prototype.$_createProxy = function () {
         var _this = this;
@@ -53,6 +54,9 @@ var Uq = /** @class */ (function () {
                 var lk = key.toLowerCase();
                 if (lk === '$') {
                     return _this;
+                }
+                if (lk === 'SQL') {
+                    return _this.$_uqSql;
                 }
                 var ret = target[lk];
                 if (ret !== undefined)
@@ -66,8 +70,22 @@ var Uq = /** @class */ (function () {
                 return undefined;
             }
         });
-        //this.proxy = ret;
-        //this.idCache = new IDCache(this.proxy);
+        return ret;
+    };
+    Uq.prototype.$_createUqSqlProxy = function () {
+        var _this = this;
+        var ret = new Proxy(this.$_uqMan, {
+            get: function (target, key, receiver) {
+                var lk = key.toLowerCase();
+                var ret = target['$' + lk];
+                if (ret !== undefined)
+                    return ret;
+                var err = "entity " + _this.$_uqMan.name + "." + String(lk) + " not defined";
+                console.error('UQ错误：' + err);
+                _this.showReload('服务器正在更新');
+                return undefined;
+            }
+        });
         return ret;
     };
     Uq.prototype.showReload = function (msg) {
