@@ -51,13 +51,13 @@ var Uq = /** @class */ (function () {
         var _this = this;
         var ret = new Proxy(this.$_uqMan.entities, {
             get: function (target, key, receiver) {
-                var lk = key.toLowerCase();
-                if (lk === '$') {
+                if (key === '$') {
                     return _this;
                 }
-                if (lk === 'SQL') {
+                if (key === 'SQL') {
                     return _this.$_uqSql;
                 }
+                var lk = key.toLowerCase();
                 var ret = target[lk];
                 if (ret !== undefined)
                     return ret;
@@ -76,11 +76,10 @@ var Uq = /** @class */ (function () {
         var _this = this;
         var ret = new Proxy(this.$_uqMan, {
             get: function (target, key, receiver) {
-                var lk = key.toLowerCase();
-                var ret = target['$' + lk];
+                var ret = target['$' + key];
                 if (ret !== undefined)
                     return ret;
-                var err = "entity " + _this.$_uqMan.name + "." + String(lk) + " not defined";
+                var err = "entity " + _this.$_uqMan.name + "." + String(key) + " not defined";
                 console.error('UQ错误：' + err);
                 _this.showReload('服务器正在更新');
                 return undefined;

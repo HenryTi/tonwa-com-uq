@@ -15,13 +15,13 @@ export class Uq {
 	$_createProxy() {
 		let ret = new Proxy(this.$_uqMan.entities, {
 			get: (target, key, receiver) => {
-				let lk = (key as string).toLowerCase();
-				if (lk === '$') {
+				if (key === '$') {
 					return this;
 				}
-				if (lk === 'SQL') {
+				if (key === 'SQL') {
 					return this.$_uqSql;
 				}
+				let lk = (key as string).toLowerCase();
 				let ret = target[lk];
 				if (ret !== undefined) return ret;
 				let func = (this.$_uqMan as any)[key];
@@ -38,10 +38,9 @@ export class Uq {
 	private $_createUqSqlProxy(): UqCore {
 		let ret = new Proxy(this.$_uqMan, {
 			get: (target, key, receiver) => {
-				let lk = (key as string).toLowerCase();
-				let ret = (target as any)['$' + lk];
+				let ret = (target as any)['$' + (key as string)];
 				if (ret !== undefined) return ret;
-				let err = `entity ${this.$_uqMan.name}.${String(lk)} not defined`;
+				let err = `entity ${this.$_uqMan.name}.${String(key)} not defined`;
 				console.error('UQ错误：' + err);
 				this.showReload('服务器正在更新');
 				return undefined;
