@@ -118,7 +118,7 @@ var TonwaReact = /** @class */ (function (_super) {
         _this.setCreateLogin(login_1.createLogin);
         return _this;
     }
-    TonwaReact.prototype.createWeb = function () { return new app_1.WebReact(); };
+    TonwaReact.prototype.createWeb = function () { return new app_1.WebReact(this); };
     TonwaReact.prototype.createObservableMap = function () {
         return mobx_1.observable.map({}, { deep: false });
     };
@@ -132,6 +132,9 @@ var TonwaReact = /** @class */ (function (_super) {
         configurable: true
     });
     ;
+    TonwaReact.prototype.setFetchError = function (fetchError) {
+        this.navView.setFetchError(fetchError);
+    };
     TonwaReact.prototype.renderNavView = function (onLogined, notLogined, userPassword) {
         var _this = this;
         return (0, jsx_runtime_1.jsx)(nav_1.NavView, { ref: function (nv) { return _this.navView = nv; }, onLogined: onLogined, notLogined: notLogined, userPassword: userPassword }, void 0);

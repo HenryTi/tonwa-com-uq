@@ -48,6 +48,7 @@ export declare class NavView extends React.Component<Props, NavViewState> {
     back: (confirm?: boolean) => Promise<void>;
     confirmBox(message?: string): boolean;
     clearError: () => void;
+    setFetchError(fetchError: FetchError): void;
     render(): JSX.Element;
     private refresh;
     backIcon: JSX.Element;

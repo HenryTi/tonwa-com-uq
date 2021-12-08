@@ -359,6 +359,9 @@ var NavView = /** @class */ (function (_super) {
     NavView.prototype.confirmBox = function (message) {
         return window.confirm(message);
     };
+    NavView.prototype.setFetchError = function (fetchError) {
+        this.setState({ fetchError: fetchError });
+    };
     NavView.prototype.render = function () {
         var _a = this.state, notSupportedBrowser = _a.notSupportedBrowser, wait = _a.wait, fetchError = _a.fetchError;
         if (notSupportedBrowser === true) {

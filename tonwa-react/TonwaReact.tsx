@@ -24,7 +24,7 @@ export class TonwaReact extends Tonwa {
         this.setCreateLogin(createLogin);
     }
 
-    createWeb(): Web { return new WebReact(); }
+    createWeb(): Web { return new WebReact(this); }
 
     createObservableMap<K, V>(): Map<K, V> {
         return observable.map({}, { deep: false });
@@ -36,6 +36,10 @@ export class TonwaReact extends Tonwa {
     }
 
     get nav(): Nav<JSX.Element> { return this.navView };
+
+    setFetchError(fetchError: FetchError) {
+        this.navView.setFetchError(fetchError);
+    }
 
     renderNavView(onLogined: (isUserLogin?: boolean) => Promise<void>,
         notLogined?: () => Promise<void>,

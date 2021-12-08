@@ -12,6 +12,7 @@ export declare class TonwaReact extends Tonwa {
     createObservableMap<K, V>(): Map<K, V>;
     set(navView: NavView): void;
     get nav(): Nav<JSX.Element>;
+    setFetchError(fetchError: FetchError): void;
     renderNavView(onLogined: (isUserLogin?: boolean) => Promise<void>, notLogined?: () => Promise<void>, userPassword?: () => Promise<{
         user: string;
         password: string;

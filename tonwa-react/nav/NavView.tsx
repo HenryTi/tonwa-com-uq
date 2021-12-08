@@ -267,6 +267,11 @@ export class NavView extends React.Component<Props, NavViewState> {
     clearError = () => {
         this.setState({ fetchError: undefined });
     }
+
+    setFetchError(fetchError: FetchError) {
+        this.setState({ fetchError });
+    }
+
     render() {
         const { notSupportedBrowser, wait, fetchError } = this.state;
         if (notSupportedBrowser === true) {
