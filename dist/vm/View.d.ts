@@ -15,6 +15,9 @@ export declare abstract class View<C extends Controller> {
     navigate(url: string): void;
     abstract render(param?: any): JSX.Element;
     protected react(func: () => JSX.Element): JSX.Element;
+    protected shallow<T extends object>(data: T): T;
+    protected deep<T extends object>(data: T): T;
+    protected runInAction<T>(fn: () => T): T;
     protected renderVm(vm: new (controller: C) => View<C>, param?: any): JSX.Element;
     protected openVPage(vp: new (controller: C) => VPage<C>, param?: any, afterBack?: () => Promise<void>): Promise<void>;
     protected event(type: string, value?: any): Promise<void>;

@@ -65,9 +65,6 @@ export abstract class CAppBase<U> extends ControllerWithWeb {
 	private uqsMan: UQsMan;
 	protected _uqs: U;
 	readonly web: Web;
-	//readonly nav: Nav;
-	timezone: number;
-	unitTimezone: number;
 
 	constructor(tonwa: Tonwa, config?: AppConfig) {
 		super(tonwa);

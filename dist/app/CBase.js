@@ -66,19 +66,6 @@ var CBase = /** @class */ (function (_super) {
         }
         return _this;
     }
-    Object.defineProperty(CBase.prototype, "timezone", {
-        //readonly nav: Nav;
-        //get uqs(): U {return this._uqs}
-        //get cApp(): A {return this._cApp}
-        get: function () { return this.cApp.timezone; },
-        enumerable: false,
-        configurable: true
-    });
-    Object.defineProperty(CBase.prototype, "unitTimezone", {
-        get: function () { return this.cApp.unitTimezone; },
-        enumerable: false,
-        configurable: true
-    });
     CBase.prototype.getUqRoles = function (uqName) {
         var _a;
         return __awaiter(this, void 0, void 0, function () {

@@ -95,6 +95,15 @@ var View = /** @class */ (function () {
         var V = (0, mobx_react_1.observer)(func.bind(this));
         return (0, jsx_runtime_1.jsx)(V, {}, void 0);
     };
+    View.prototype.shallow = function (data) {
+        return this.controller.shallow(data);
+    };
+    View.prototype.deep = function (data) {
+        return this.controller.deep(data);
+    };
+    View.prototype.runInAction = function (fn) {
+        return this.controller.runInAction(fn);
+    };
     View.prototype.renderVm = function (vm, param) {
         return (new vm(this.controller)).render(param);
     };

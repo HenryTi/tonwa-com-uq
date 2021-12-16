@@ -1,4 +1,3 @@
-/// <reference types="react" />
 import { UqMan } from "tonwa-core";
 export declare class Uq {
     private $_uqMan;

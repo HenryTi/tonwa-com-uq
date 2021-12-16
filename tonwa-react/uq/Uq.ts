@@ -75,6 +75,7 @@ export class Uq {
 	*/
 
 	protected IDRender = (id: number, render?: (value: any) => JSX.Element): JSX.Element => {
+		if (id === undefined || id === null) return null;
 		return React.createElement(observer(() => {
 			let ret = this.$_uqMan.idCache.getValue(id);
 			if (ret === undefined) {
@@ -96,16 +97,13 @@ export class Uq {
 	private renderIDUnknownType(id: number) {
 		return React.createElement('span', { props: { className: 'text-muted' }, children: [`id=${id} type undefined`] });
 	}
-	/*
-	IDLocalTv(ids: number[]): Promise<any[]> {
-		return this.IDTv(ids.map(v => -v));
-	}
-	*/
+
 	protected IDLocalV = <T extends object>(id: number): T => {
 		return this.IDV(-id);
 	}
 
 	protected IDLocalRender = (id: number, render?: (value: any) => JSX.Element): JSX.Element => {
+		if (id === undefined || id === null) return null;
 		return this.IDRender(-id, render);
 	}
 }

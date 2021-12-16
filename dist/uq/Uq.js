@@ -15,6 +15,8 @@ var Uq = /** @class */ (function () {
         }
         */
         this.IDRender = function (id, render) {
+            if (id === undefined || id === null)
+                return null;
             return react_1.default.createElement((0, mobx_react_1.observer)(function () {
                 var ret = _this.$_uqMan.idCache.getValue(id);
                 if (ret === undefined) {
@@ -33,15 +35,12 @@ var Uq = /** @class */ (function () {
             var ret = _this.$_uqMan.idCache.getValue(id);
             return ret;
         };
-        /*
-        IDLocalTv(ids: number[]): Promise<any[]> {
-            return this.IDTv(ids.map(v => -v));
-        }
-        */
         this.IDLocalV = function (id) {
             return _this.IDV(-id);
         };
         this.IDLocalRender = function (id, render) {
+            if (id === undefined || id === null)
+                return null;
             return _this.IDRender(-id, render);
         };
         this.$_uqMan = uqMan;

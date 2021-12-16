@@ -6,8 +6,6 @@ export declare abstract class CBase<A extends CAppBase<U>, U> extends Controller
     readonly cApp: A;
     readonly uqs: U;
     readonly web: Web;
-    get timezone(): number;
-    get unitTimezone(): number;
     getUqRoles(uqName: string): Promise<string[]>;
     protected internalStart(param?: any, ...params: any[]): Promise<void>;
     internalT(str: string): any;

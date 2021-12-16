@@ -17,11 +17,7 @@ export abstract class CBase<A extends CAppBase<U>, U> extends ControllerWithWeb 
 	readonly cApp: A;
 	readonly uqs: U;
 	readonly web: Web;
-	//readonly nav: Nav;
-	//get uqs(): U {return this._uqs}
-	//get cApp(): A {return this._cApp}
-	get timezone(): number { return this.cApp.timezone; }
-	get unitTimezone(): number { return this.cApp.unitTimezone; }
+
 	async getUqRoles(uqName: string): Promise<string[]> {
 		return this.cApp?.getUqRoles(uqName);
 	}

@@ -32,6 +32,18 @@ export abstract class View<C extends Controller> {
         return <V />;
     }
 
+    protected shallow<T extends object>(data: T) {
+        return this.controller.shallow(data);
+    }
+
+    protected deep<T extends object>(data: T) {
+        return this.controller.deep(data);
+    }
+
+    protected runInAction<T>(fn: () => T): T {
+        return this.controller.runInAction(fn);
+    }
+
     protected renderVm(vm: new (controller: C) => View<C>, param?: any) {
         return (new vm(this.controller)).render(param);
     }
