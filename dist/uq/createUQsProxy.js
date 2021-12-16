@@ -5,7 +5,7 @@ var jsx_runtime_1 = require("react/jsx-runtime");
 var mobx_react_1 = require("mobx-react");
 var tonwa_core_1 = require("tonwa-core");
 var Uq_1 = require("./Uq");
-function createUQsProxy(uqsMan) {
+function createUQsProxy(web, uqsMan) {
     buildTuidTv();
     var uqReacts = {};
     function setUq(uqKey, proxy) {
@@ -18,7 +18,7 @@ function createUQsProxy(uqsMan) {
     }
     for (var _i = 0, _a = uqsMan.uqMans; _i < _a.length; _i++) {
         var uqMan = _a[_i];
-        var uqReact = new Uq_1.Uq(uqMan);
+        var uqReact = new Uq_1.Uq(web, uqMan);
         var proxy = uqReact.$_createProxy();
         setUq(uqMan.getUqKey(), proxy);
         setUq(uqMan.getUqKeyWithConfig(), proxy);

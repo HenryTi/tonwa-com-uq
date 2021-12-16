@@ -1,8 +1,10 @@
-import { UqMan } from "tonwa-core";
+/// <reference types="react" />
+import { UqMan, Web } from "tonwa-core";
 export declare class Uq {
+    private web;
     private $_uqMan;
     private $_uqSql;
-    constructor(uqMan: UqMan);
+    constructor(web: Web, uqMan: UqMan);
     $_createProxy(): {
         [name: string]: import("tonwa-core").Entity;
     };

@@ -1,4 +1,4 @@
-import { /*centerApi, logoutApis, */AppConfig as AppConfigCore, Tonwa, Web } from "tonwa-core";
+import { /*centerApi, logoutApis, */AppConfig as AppConfigCore, Tonwa, UqQuery, Web } from "tonwa-core";
 import { User, UqsConfig as UqsConfigCore } from 'tonwa-core';
 import { RouteFunc, Hooks, Navigo, NamedRoute } from "tonwa-core";
 import { UQsLoader, UQsMan } from "tonwa-core";
@@ -65,6 +65,10 @@ export abstract class CAppBase<U> extends ControllerWithWeb {
 	private uqsMan: UQsMan;
 	protected _uqs: U;
 	readonly web: Web;
+	timezone: number;
+	unitTimezone: number;
+	unitBizMonth: number;
+	unitBizDate: number;
 
 	constructor(tonwa: Tonwa, config?: AppConfig) {
 		super(tonwa);
@@ -90,6 +94,39 @@ export abstract class CAppBase<U> extends ControllerWithWeb {
 	}
 	protected afterBuiltUQs(uqs: any) { }
 
+	protected async loadUnitTime($getTimezone: UqQuery<any, any>) {
+		let ret = await $getTimezone.query({});
+		let tz = ret.ret[0];
+		this.timezone = tz.timezone ?? 8;
+		this.unitTimezone = tz.unitTimeZone ?? 8;
+		this.unitBizMonth = (tz.unitBizMonth ?? 1) - 1;
+		this.unitBizDate = tz.unitBizDate ?? 1;
+	}
+
+	bizDate(date: Date): Date {
+		let year: number, month: number, d: number;
+		year = date.getFullYear();
+		month = date.getMonth();
+		d = date.getDate();
+		let bm = this.unitBizMonth;
+		let bd = this.unitBizDate;
+		if (bd < 0) {
+			if (d < -bd) --month;
+		}
+		else {
+			if (d >= bd) ++month;
+		}
+		if (bm < 0) {
+			if (month < -bm) --year;
+			month = (month - bm) % 12;
+		}
+		else {
+			if (month >= bm) ++year;
+			month = (month + bm) % 12;
+		}
+		return new Date(year, month, 1);
+	}
+
 	private uqsUser: any = '';
 	protected async initUQs(): Promise<any> {
 		if (!this.appConfig) return;
@@ -100,7 +137,7 @@ export abstract class CAppBase<U> extends ControllerWithWeb {
 		let uqsLoader = new UQsLoader(this.tonwa, this.appConfig);
 		let retErrors = await uqsLoader.build();
 		this.uqsMan = uqsLoader.uqsMan;
-		this._uqs = createUQsProxy(uqsLoader.uqsMan) as any; //  this.uqsMan.proxy;
+		this._uqs = createUQsProxy(this.web, uqsLoader.uqsMan) as any; //  this.uqsMan.proxy;
 		this.afterBuiltUQs(this._uqs);
 		return retErrors;
 	}

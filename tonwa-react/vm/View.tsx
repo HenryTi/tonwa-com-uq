@@ -24,13 +24,7 @@ export abstract class View<C extends Controller> {
     protected get isDev() { return env.isDevelopment }
     get isWebNav(): boolean { return this.nav.isWebNav }
     navigate(url: string) { this.tonwa.navigate(url) }
-    //protected isMe(id:any) {return this.controller.isMe(id)}
     abstract render(param?: any): JSX.Element;
-
-    protected react(func: () => JSX.Element): JSX.Element {
-        let V = observer(func.bind(this));
-        return <V />;
-    }
 
     protected shallow<T extends object>(data: T) {
         return this.controller.shallow(data);
@@ -42,6 +36,11 @@ export abstract class View<C extends Controller> {
 
     protected runInAction<T>(fn: () => T): T {
         return this.controller.runInAction(fn);
+    }
+
+    protected react(func: () => JSX.Element): JSX.Element {
+        let V = observer(func.bind(this));
+        return <V />;
     }
 
     protected renderVm(vm: new (controller: C) => View<C>, param?: any) {

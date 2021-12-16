@@ -1,4 +1,4 @@
-import { Web } from 'tonwa-core';
+import { User, Web } from 'tonwa-core';
 import { ControllerWithWeb, WebNav } from "../vm";
 import { CAppBase, IConstructor } from "./CAppBase";
 
@@ -17,6 +17,9 @@ export abstract class CBase<A extends CAppBase<U>, U> extends ControllerWithWeb 
 	readonly cApp: A;
 	readonly uqs: U;
 	readonly web: Web;
+	get timezone(): number { return this.cApp.timezone; }
+	get unitTimezone(): number { return this.cApp.unitTimezone; }
+	bizDate(date: Date): Date { return this.cApp.bizDate(date); }
 
 	async getUqRoles(uqName: string): Promise<string[]> {
 		return this.cApp?.getUqRoles(uqName);
@@ -48,6 +51,13 @@ export abstract class CBase<A extends CAppBase<U>, U> extends ControllerWithWeb 
 		let ret = Object.assign({}, wn);
 		Object.assign(ret, this.webNav);
 		return ret;
+	}
+
+	async userFromId(userId: number): Promise<User> {
+		return await this.web.centerApi.userFromId(userId);
+	}
+	async userFromKey(userName: string): Promise<User> {
+		return await this.web.centerApi.userFromKey(userName);
 	}
 }
 

@@ -7,7 +7,7 @@ exports.Uq = void 0;
 var mobx_react_1 = require("mobx-react");
 var react_1 = __importDefault(require("react"));
 var Uq = /** @class */ (function () {
-    function Uq(uqMan) {
+    function Uq(web, uqMan) {
         var _this = this;
         /*
         IDTv(ids: number[]): Promise<any[]> {
@@ -35,6 +35,11 @@ var Uq = /** @class */ (function () {
             var ret = _this.$_uqMan.idCache.getValue(id);
             return ret;
         };
+        /*
+        IDLocalTv(ids: number[]): Promise<any[]> {
+            return this.IDTv(ids.map(v => -v));
+        }
+        */
         this.IDLocalV = function (id) {
             return _this.IDV(-id);
         };
@@ -43,6 +48,7 @@ var Uq = /** @class */ (function () {
                 return null;
             return _this.IDRender(-id, render);
         };
+        this.web = web;
         this.$_uqMan = uqMan;
         this.$_uqSql = this.$_createUqSqlProxy();
     }
@@ -63,6 +69,9 @@ var Uq = /** @class */ (function () {
                 var func = _this.$_uqMan[key];
                 if (func !== undefined)
                     return func;
+                func = _this[key];
+                if (func !== undefined)
+                    return func;
                 var err = "entity " + _this.$_uqMan.name + "." + String(key) + " not defined";
                 console.error('UQ错误：' + err);
                 _this.showReload('服务器正在更新');
@@ -80,29 +89,28 @@ var Uq = /** @class */ (function () {
                     return ret;
                 var err = "entity " + _this.$_uqMan.name + "." + String(key) + " not defined";
                 console.error('UQ错误：' + err);
-                _this.showReload('服务器正在更新');
+                _this.$_uqMan.showReload('服务器正在更新');
                 return undefined;
             }
         });
         return ret;
     };
     Uq.prototype.showReload = function (msg) {
-        console.error('uq proxy error name', msg);
-        /*
-        let cache = this.localMap.child('$reload-tick');
-        let reloadTick = cache.get();
-        if (!reloadTick) reloadTick = 0;
+        //console.error('uq proxy error name', msg);
+        var cache = this.$_uqMan.localMap.child('$reload-tick');
+        var reloadTick = cache.get();
+        if (!reloadTick)
+            reloadTick = 0;
         console.error(msg);
-        this.localMap.removeAll();
-        let tick = Date.now();
+        this.$_uqMan.localMap.removeAll();
+        var tick = Date.now();
         cache.set(tick);
-        if (tick - reloadTick  < 10*1000)  {
+        if (tick - reloadTick < 10 * 1000) {
             this.web.showReloadPage(msg);
         }
         else {
             this.web.reload();
         }
-        */
     };
     Uq.prototype.renderIDUnknownType = function (id) {
         return react_1.default.createElement('span', { props: { className: 'text-muted' }, children: ["id=" + id + " type undefined"] });

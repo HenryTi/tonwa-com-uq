@@ -86,6 +86,52 @@ var CAppBase = /** @class */ (function (_super) {
         (0, tonwa_core_2.setGlobalRes)(res);
     };
     CAppBase.prototype.afterBuiltUQs = function (uqs) { };
+    CAppBase.prototype.loadUnitTime = function ($getTimezone) {
+        var _a, _b, _c, _d;
+        return __awaiter(this, void 0, void 0, function () {
+            var ret, tz;
+            return __generator(this, function (_e) {
+                switch (_e.label) {
+                    case 0: return [4 /*yield*/, $getTimezone.query({})];
+                    case 1:
+                        ret = _e.sent();
+                        tz = ret.ret[0];
+                        this.timezone = (_a = tz.timezone) !== null && _a !== void 0 ? _a : 8;
+                        this.unitTimezone = (_b = tz.unitTimeZone) !== null && _b !== void 0 ? _b : 8;
+                        this.unitBizMonth = ((_c = tz.unitBizMonth) !== null && _c !== void 0 ? _c : 1) - 1;
+                        this.unitBizDate = (_d = tz.unitBizDate) !== null && _d !== void 0 ? _d : 1;
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    CAppBase.prototype.bizDate = function (date) {
+        var year, month, d;
+        year = date.getFullYear();
+        month = date.getMonth();
+        d = date.getDate();
+        var bm = this.unitBizMonth;
+        var bd = this.unitBizDate;
+        if (bd < 0) {
+            if (d < -bd)
+                --month;
+        }
+        else {
+            if (d >= bd)
+                ++month;
+        }
+        if (bm < 0) {
+            if (month < -bm)
+                --year;
+            month = (month - bm) % 12;
+        }
+        else {
+            if (month >= bm)
+                ++year;
+            month = (month + bm) % 12;
+        }
+        return new Date(year, month, 1);
+    };
     CAppBase.prototype.initUQs = function () {
         return __awaiter(this, void 0, void 0, function () {
             var user, uqsLoader, retErrors;
@@ -104,7 +150,7 @@ var CAppBase = /** @class */ (function (_super) {
                     case 1:
                         retErrors = _a.sent();
                         this.uqsMan = uqsLoader.uqsMan;
-                        this._uqs = (0, uq_1.createUQsProxy)(uqsLoader.uqsMan); //  this.uqsMan.proxy;
+                        this._uqs = (0, uq_1.createUQsProxy)(this.web, uqsLoader.uqsMan); //  this.uqsMan.proxy;
                         this.afterBuiltUQs(this._uqs);
                         return [2 /*return*/, retErrors];
                 }

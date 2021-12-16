@@ -1,9 +1,9 @@
 import { observer } from "mobx-react";
-import { UQsMan, TuidInner, uqStringify, TuidImport } from "tonwa-core";
+import { UQsMan, TuidInner, uqStringify, TuidImport, Web } from "tonwa-core";
 import { Render } from "../ui";
 import { Uq } from "./Uq";
 
-export function createUQsProxy(uqsMan: UQsMan) {
+export function createUQsProxy(web: Web, uqsMan: UQsMan) {
     buildTuidTv();
     const uqReacts: { [key: string]: any } = {};
     function setUq(uqKey: string, proxy: any): void {
@@ -13,7 +13,7 @@ export function createUQsProxy(uqsMan: UQsMan) {
         if (lower !== uqKey) uqReacts[lower] = proxy;
     }
     for (let uqMan of uqsMan.uqMans) {
-        let uqReact = new Uq(uqMan);
+        let uqReact = new Uq(web, uqMan);
         let proxy = uqReact.$_createProxy();
         setUq(uqMan.getUqKey(), proxy);
         setUq(uqMan.getUqKeyWithConfig(), proxy);

@@ -1,4 +1,4 @@
-import { UQsMan } from "tonwa-core";
-export declare function createUQsProxy(uqsMan: UQsMan): {
+import { UQsMan, Web } from "tonwa-core";
+export declare function createUQsProxy(web: Web, uqsMan: UQsMan): {
     [key: string]: any;
 };

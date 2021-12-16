@@ -66,6 +66,17 @@ var CBase = /** @class */ (function (_super) {
         }
         return _this;
     }
+    Object.defineProperty(CBase.prototype, "timezone", {
+        get: function () { return this.cApp.timezone; },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(CBase.prototype, "unitTimezone", {
+        get: function () { return this.cApp.unitTimezone; },
+        enumerable: false,
+        configurable: true
+    });
+    CBase.prototype.bizDate = function (date) { return this.cApp.bizDate(date); };
     CBase.prototype.getUqRoles = function (uqName) {
         var _a;
         return __awaiter(this, void 0, void 0, function () {
@@ -115,6 +126,26 @@ var CBase = /** @class */ (function (_super) {
         var ret = Object.assign({}, wn);
         Object.assign(ret, this.webNav);
         return ret;
+    };
+    CBase.prototype.userFromId = function (userId) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.web.centerApi.userFromId(userId)];
+                    case 1: return [2 /*return*/, _a.sent()];
+                }
+            });
+        });
+    };
+    CBase.prototype.userFromKey = function (userName) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.web.centerApi.userFromKey(userName)];
+                    case 1: return [2 /*return*/, _a.sent()];
+                }
+            });
+        });
     };
     return CBase;
 }(vm_1.ControllerWithWeb));

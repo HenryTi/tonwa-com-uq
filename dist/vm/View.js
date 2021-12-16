@@ -91,10 +91,6 @@ var View = /** @class */ (function () {
         configurable: true
     });
     View.prototype.navigate = function (url) { this.tonwa.navigate(url); };
-    View.prototype.react = function (func) {
-        var V = (0, mobx_react_1.observer)(func.bind(this));
-        return (0, jsx_runtime_1.jsx)(V, {}, void 0);
-    };
     View.prototype.shallow = function (data) {
         return this.controller.shallow(data);
     };
@@ -103,6 +99,10 @@ var View = /** @class */ (function () {
     };
     View.prototype.runInAction = function (fn) {
         return this.controller.runInAction(fn);
+    };
+    View.prototype.react = function (func) {
+        var V = (0, mobx_react_1.observer)(func.bind(this));
+        return (0, jsx_runtime_1.jsx)(V, {}, void 0);
     };
     View.prototype.renderVm = function (vm, param) {
         return (new vm(this.controller)).render(param);
