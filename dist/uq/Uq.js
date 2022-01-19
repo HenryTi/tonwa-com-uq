@@ -72,7 +72,7 @@ var Uq = /** @class */ (function () {
                 func = _this[key];
                 if (func !== undefined)
                     return func;
-                var err = "entity " + _this.$_uqMan.name + "." + String(key) + " not defined";
+                var err = "entity ".concat(_this.$_uqMan.name, ".").concat(String(key), " not defined");
                 console.error('UQ错误：' + err);
                 _this.showReload('服务器正在更新');
                 return undefined;
@@ -87,7 +87,7 @@ var Uq = /** @class */ (function () {
                 var ret = target['$' + key];
                 if (ret !== undefined)
                     return ret;
-                var err = "entity " + _this.$_uqMan.name + "." + String(key) + " not defined";
+                var err = "entity ".concat(_this.$_uqMan.name, ".").concat(String(key), " not defined");
                 console.error('UQ错误：' + err);
                 _this.$_uqMan.showReload('服务器正在更新');
                 return undefined;
@@ -113,7 +113,7 @@ var Uq = /** @class */ (function () {
         }
     };
     Uq.prototype.renderIDUnknownType = function (id) {
-        return react_1.default.createElement('span', { props: { className: 'text-muted' }, children: ["id=" + id + " type undefined"] });
+        return react_1.default.createElement('span', { props: { className: 'text-muted' }, children: ["id=".concat(id, " type undefined")] });
     };
     return Uq;
 }());

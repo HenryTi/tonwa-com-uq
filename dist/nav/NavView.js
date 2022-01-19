@@ -107,7 +107,7 @@ var NavView = /** @class */ (function (_super) {
             _this.isHistoryBack = true;
             _this.back(true);
             _this.isHistoryBack = false;
-            console.log("///\\\\ " + (Date.now() - tick) + "ms backbutton pressed - nav level: " + _this.stack.length);
+            console.log("///\\\\ ".concat(Date.now() - tick, "ms backbutton pressed - nav level: ").concat(_this.stack.length));
         };
         _this.back = function (confirm) {
             if (confirm === void 0) { confirm = true; }

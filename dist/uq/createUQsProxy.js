@@ -29,7 +29,7 @@ function createUQsProxy(web, uqsMan) {
             uqReact.localMap.removeAll();
         }
         //this.web.showReloadPage(msg);
-        console.error("uq proxy " + key + " error");
+        console.error("uq proxy ".concat(key, " error"));
     }
     return new Proxy(uqReacts, {
         get: function (target, key, receiver) {
@@ -38,7 +38,7 @@ function createUQsProxy(web, uqsMan) {
             if (ret !== undefined)
                 return ret;
             debugger;
-            console.error("controller.uqs." + String(key) + " undefined");
+            console.error("controller.uqs.".concat(String(key), " undefined"));
             onUqProxyError(String(key));
             return undefined;
         },
