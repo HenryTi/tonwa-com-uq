@@ -29,4 +29,5 @@ __exportStar(require("./ax"), exports);
 __exportStar(require("./autoHideTips"), exports);
 __exportStar(require("./login"), exports);
 __exportStar(require("./input"), exports);
+__exportStar(require("./inputRules"), exports);
 //# sourceMappingURL=index.js.map

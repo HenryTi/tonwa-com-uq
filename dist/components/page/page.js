@@ -93,17 +93,6 @@ var Page = /** @class */ (function (_super) {
             inWebNav = false;
         }
         return (0, pageHeader_1.renderPageHeader)(pageHeaderProps, inWebNav);
-        /*
-        let pageHeader = header !== false && <PageHeader
-            back={back}
-            center={header as any}
-            right={right}
-            logout={this.props.logout}
-            className={headerClassName}
-            afterBack={afterBack}
-            />;
-        return pageHeader;
-        */
     };
     Page.prototype.renderFooter = function (webNav) {
         var footer = this.props.footer;

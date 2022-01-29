@@ -17,3 +17,4 @@ export * from './ax';
 export * from './autoHideTips';
 export * from './login';
 export * from './input';
+export * from './inputRules';

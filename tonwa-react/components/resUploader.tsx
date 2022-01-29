@@ -42,6 +42,7 @@ export class ResUploader extends React.Component<ResUploaderProps> {
             if (file.size > maxSize) return null;
             data.append('files[]', file, file.name);
         }
+        return data;
     }
 
     getFile0(): File {

@@ -1,17 +1,16 @@
-import * as React from 'react';
 import { UiIdItem } from '../schema';
 import { Page } from '../page/page';
 import { observer } from 'mobx-react';
 import { ItemEdit } from './itemEdit';
 
 export class IdItemEdit extends ItemEdit {
-    get uiItem(): UiIdItem {return this._uiItem as UiIdItem}
-    protected async internalStart():Promise<any> {
+    get uiItem(): UiIdItem { return this._uiItem as UiIdItem }
+    protected async internalStart(): Promise<any> {
         return new Promise<any>(async (resolve, reject) => {
             //let element = React.createElement(this.page, {resolve:resolve, reject:reject});
             //nav.push(element,reject);
 
-            let {pickId} = this.uiItem;
+            let { pickId } = this.uiItem;
             if (pickId === undefined) {
                 alert('IdItemEdit.pickId = undefined');
                 return;
@@ -26,15 +25,15 @@ export class IdItemEdit extends ItemEdit {
         });
     }
 
-    protected async internalEnd():Promise<void> {}
+    protected async internalEnd(): Promise<void> { }
 
-    private onChange = (value:any) => {
+    private onChange = (value: any) => {
         this.newValue = value;
         let preValue = this.value;
         this.isChanged = (this.newValue !== preValue);
     }
 
-    private page = observer((props:{resolve:(value:any)=>void, reject: (resean?:any)=>void}):JSX.Element => {
+    private page = observer((props: { resolve: (value: any) => void, reject: (resean?: any) => void }): JSX.Element => {
         /*
         let {resolve, reject} = props;
         let {list} = this.uiItem;

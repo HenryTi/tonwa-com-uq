@@ -58,17 +58,6 @@ export class Page extends React.Component<PageProps> {
 			inWebNav = false;
 		}
 		return renderPageHeader(pageHeaderProps, inWebNav);
-		/*
-		let pageHeader = header !== false && <PageHeader 
-			back={back} 
-			center={header as any}
-			right={right}
-			logout={this.props.logout}
-			className={headerClassName}
-			afterBack={afterBack}
-			/>;
-		return pageHeader;
-		*/
 	}
 
 	private renderFooter(webNav?: PageWebNav) {

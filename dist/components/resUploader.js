@@ -172,6 +172,7 @@ var ResUploader = /** @class */ (function (_super) {
                 return null;
             data.append('files[]', file, file.name);
         }
+        return data;
     };
     ResUploader.prototype.getFile0 = function () {
         return this.fileInput.files[0];
