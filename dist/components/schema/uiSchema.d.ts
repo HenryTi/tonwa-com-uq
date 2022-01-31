@@ -7,7 +7,7 @@ import { IValuesView } from './IValuesView';
 import { FieldRule } from '../inputRules';
 import { ChangedHandler, ChangingHandler, PickId } from '../../ui';
 export declare type TypeWidget = new (context: Context, itemSchema: ItemSchema, fieldProps: FieldProps, children: React.ReactNode) => Widget;
-export declare type UiType = 'form' | 'arr' | 'group' | 'button' | 'submit' | 'custom' | 'image' | 'id' | 'text' | 'textarea' | 'password' | 'date' | 'datetime' | 'select' | 'url' | 'email' | 'updown' | 'number' | 'color' | 'checkbox' | 'checkboxes' | 'radio' | 'range' | 'tagSingle' | 'tagMulti';
+export declare type UiType = 'form' | 'arr' | 'group' | 'button' | 'submit' | 'custom' | 'image' | 'id' | 'text' | 'textarea' | 'password' | 'date' | 'datetime' | 'select' | 'url' | 'email' | 'time' | 'updown' | 'number' | 'color' | 'checkbox' | 'checkboxes' | 'radio' | 'range' | 'tagSingle' | 'tagMulti';
 export interface UiItem {
     widget?: UiType;
     readOnly?: boolean;
@@ -63,6 +63,21 @@ export interface UiNumberItem extends UiInputItem {
     min?: number;
     max?: number;
     step?: number;
+}
+export interface UiDate extends UiInputItem {
+    widget: 'date';
+    min?: Date;
+    max?: Date;
+}
+export interface UiDateTime extends UiInputItem {
+    widget: 'datetime';
+    min?: Date;
+    max?: Date;
+}
+export interface UiTime extends UiInputItem {
+    widget: 'time';
+    min?: Date;
+    max?: Date;
 }
 export interface UiCheckItem extends UiItem {
     widget: 'checkbox';
