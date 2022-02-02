@@ -18,24 +18,29 @@ import { ButtonWidget } from './buttonWidget';
 import { ArrComponent } from './arrComponent';
 import { ImageWidget } from './imageWidget';
 import { TagSingleWidget, TagMultiWidget } from './tagWidget';
+import { RefWidget } from './refWidget';
 
 interface WidgetFactory {
-	widget?: TypeWidget;
-	dataTypes?: DataType[];
+    widget?: TypeWidget;
+    dataTypes?: DataType[];
 };
 
 const stringWidget: WidgetFactory = {
-	dataTypes: ['integer', 'number', 'string'],
-	widget: TextWidget
+    dataTypes: ['integer', 'number', 'string'],
+    widget: TextWidget
 };
 
-const widgetFactories: {[type: string]: WidgetFactory} = {
+const widgetFactories: { [type: string]: WidgetFactory } = {
     id: {
         dataTypes: ['id'],
         widget: IdWidget,
     },
+    ref: {
+        dataTypes: ['id'],
+        widget: RefWidget,
+    },
     text: stringWidget,
-	string: stringWidget,
+    string: stringWidget,
     textarea: {
         dataTypes: ['string'],
         widget: TextAreaWidget
@@ -97,15 +102,15 @@ const widgetFactories: {[type: string]: WidgetFactory} = {
     radio: {
         dataTypes: ['integer', 'number', 'string', 'date', 'boolean'],
         widget: RadioWidget
-	},
-	tagSingle: {
-		dataTypes: ['integer'],
-		widget: TagSingleWidget
-	},
-	tagMulti: {
-		dataTypes: ['string'],
-		widget: TagMultiWidget
-	},
+    },
+    tagSingle: {
+        dataTypes: ['integer'],
+        widget: TagSingleWidget
+    },
+    tagMulti: {
+        dataTypes: ['string'],
+        widget: TagMultiWidget
+    },
     range: {
         dataTypes: ['integer'],
         widget: RangeWidget,
@@ -116,70 +121,71 @@ const widgetFactories: {[type: string]: WidgetFactory} = {
     }
 }
 
-export function factory(context: Context, itemSchema: ItemSchema, children:React.ReactNode, fieldProps?: FieldProps):JSX.Element {
+export function factory(context: Context, itemSchema: ItemSchema, children: React.ReactNode, fieldProps?: FieldProps): JSX.Element {
     if (context === undefined) {
         debugger;
         return null;
     }
     if (itemSchema === undefined) return undefined;
-    let {name, type} = itemSchema;
+    let { name, type } = itemSchema;
     switch (type) {
-    case 'arr':
-        let arrSchema = context.getItemSchema(name) as ArrSchema;
-        return <ArrComponent parentContext={context} arrSchema={arrSchema} children={children} />;
-    default:
-        break;
+        case 'arr':
+            let arrSchema = context.getItemSchema(name) as ArrSchema;
+            return <ArrComponent parentContext={context} arrSchema={arrSchema} children={children} />;
+        default:
+            break;
     }
 
     let typeWidget: TypeWidget;
-    let ui = context.getUiItem(name);	
-    function getTypeWidget(t:DataType): TypeWidget {
-        switch(t) {
-        default: return TextWidget; 
-        case 'id': return IdWidget;
-        case 'integer': return UpdownWidget;
-        case 'number': return NumberWidget; 
-        case 'string': return TextWidget; 
-        case 'date': return DateWidget; 
-        case 'boolean': return CheckBoxWidget; 
-        case 'button':
-        case 'submit': return ButtonWidget;
+    let ui = context.getUiItem(name);
+    function getTypeWidget(t: DataType): TypeWidget {
+        switch (t) {
+            default: return TextWidget;
+            case 'id': return IdWidget;
+            case 'integer': return UpdownWidget;
+            case 'number': return NumberWidget;
+            case 'string': return TextWidget;
+            case 'date': return DateWidget;
+            case 'boolean': return CheckBoxWidget;
+            case 'button':
+            case 'submit': return ButtonWidget;
         }
     }
-    if (ui === undefined) { 
+    if (ui === undefined) {
         typeWidget = getTypeWidget(type);
     }
     else {
-        let {widget:widgetType, hiden} = ui;
-		if (hiden === true) return null;
+        let { widget: widgetType, hiden } = ui;
+        if (hiden === true) return null;
         switch (widgetType) {
-        default:
-            if (widgetType !== undefined) {
-                let widgetFactory = widgetFactories[widgetType];
-				if (!widgetFactory) {
-					debugger;
-					throw new Error(`unknown widget ${widgetType}`);
-				}
-                typeWidget = widgetFactory.widget;
-            }
-            if (typeWidget === undefined) typeWidget = getTypeWidget(type);
-            break;
-        case 'custom':
-            typeWidget = (ui as UiCustom).WidgetClass;
-            break;
-        case 'group':
-            return <span>impletment group</span>;
+            default:
+                if (widgetType !== undefined) {
+                    let widgetFactory = widgetFactories[widgetType];
+                    if (!widgetFactory) {
+                        debugger;
+                        throw new Error(`unknown widget ${widgetType}`);
+                    }
+                    typeWidget = widgetFactory.widget;
+                }
+                if (typeWidget === undefined) typeWidget = getTypeWidget(type);
+                break;
+            case 'custom':
+                typeWidget = (ui as UiCustom).WidgetClass;
+                break;
+            case 'group':
+                return <span>impletment group</span>;
+            case 'ref':
         }
         //label = uiLabel || name;
     }
-    
-	let {widgets} = context;
-	let widget = widgets[name];
-	if (!widget) {
-		widget = new typeWidget(context, itemSchema, fieldProps, children);
-		widget.init();
-		widgets[name] = widget;
-	}
+
+    let { widgets } = context;
+    let widget = widgets[name];
+    if (!widget) {
+        widget = new typeWidget(context, itemSchema, fieldProps, children);
+        widget.init();
+        widgets[name] = widget;
+    }
 
     return <widget.container />;
     /*

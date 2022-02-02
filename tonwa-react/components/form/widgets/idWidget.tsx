@@ -1,4 +1,3 @@
-import * as React from 'react';
 import classNames from 'classnames';
 import { Widget } from './widget';
 import { UiIdItem, TempletType } from '../../schema';
@@ -7,10 +6,10 @@ import { runInAction } from 'mobx';
 const none = <small className="text-muted">[无]</small>;
 
 export class IdWidget extends Widget {
-    protected get ui(): UiIdItem {return this._ui as UiIdItem};
+    protected get ui(): UiIdItem { return this._ui as UiIdItem };
 
-    setReadOnly(value:boolean) {this.readOnly = value}
-    setDisabled(value:boolean) {this.disabled = value}    
+    setReadOnly(value: boolean) { this.readOnly = value }
+    setDisabled(value: boolean) { this.disabled = value }
 
     protected onClick = async () => {
         let pickId = this.ui && this.ui.pickId;
@@ -18,26 +17,26 @@ export class IdWidget extends Widget {
             alert('no pickId defined!');
             return;
         }
-		let id = await pickId(this.context, this.name, this.value);
-		runInAction(() => {
-			this.setDataValue(id);
-			this.clearError();
-			this.clearContextError();
-			this.checkRules();	
-		});
+        let id = await pickId(this.context, this.name, this.value);
+        runInAction(() => {
+            this.setDataValue(id);
+            this.clearError();
+            this.clearContextError();
+            this.checkRules();
+        });
     }
 
-	setValue(value:any) {
-		super.setValue(value);
-	}
+    setValue(value: any) {
+        super.setValue(value);
+    }
 
     render() {
-        let placeholder:string|JSX.Element, Templet: TempletType;
+        let placeholder: string | JSX.Element, Templet: TempletType;
         if (this.ui !== undefined) {
             placeholder = this.ui.placeholder;
             Templet = this.ui.Templet;
         }
-        let cn:any = {
+        let cn: any = {
             'form-control': true,
             'required-item': this.itemSchema.required === true,
             'cursor-pointer': true,

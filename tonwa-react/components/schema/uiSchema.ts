@@ -9,11 +9,16 @@ import { ChangedHandler, ChangingHandler, PickId } from '../../ui';
 export type TypeWidget = new (context: Context, itemSchema: ItemSchema, fieldProps: FieldProps, children: React.ReactNode) => Widget;
 
 export type UiType = 'form' | 'arr' | 'group' | 'button' | 'submit' | 'custom' | 'image'
-    | 'id'
+    | 'id' | 'ref'
     | 'text' | 'textarea' | 'password'
     | 'date' | 'datetime' | 'select' | 'url' | 'email' | 'time'
     | 'updown' | 'number' | 'color' | 'checkbox' | 'checkboxes' | 'radio' | 'range'
     | 'tagSingle' | 'tagMulti';
+
+export interface Ref<T = any> {
+    render(): JSX.Element;
+    pick(): Promise<T>;
+}
 
 //export type ChangingHandler = (context:Context, value:any, prev:any) => boolean;
 //export type ChangedHandler = (context:Context, value:any, prev:any) => Promise<void>;
@@ -39,6 +44,11 @@ export interface UiItem {
 export interface UiCustom extends UiItem {
     widget: 'custom';
     WidgetClass: TypeWidget;
+}
+
+export interface UiRef extends UiItem {
+    widget: 'ref';
+    ref: Ref;
 }
 
 export interface UiImageItem extends UiItem {
