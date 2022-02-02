@@ -32,6 +32,6 @@ export class RefWidget extends Widget {
         if (ref === undefined) {
             return <span>no ref defined!</span>;
         }
-        return ref.render();
+        return <div onClick={this.onClick}>{ref.render()}</div>;
     }
 }
