@@ -18,7 +18,7 @@ import { ButtonWidget } from './buttonWidget';
 import { ArrComponent } from './arrComponent';
 import { ImageWidget } from './imageWidget';
 import { TagSingleWidget, TagMultiWidget } from './tagWidget';
-import { RefWidget } from './refWidget';
+import { PickWidget } from './pickWidget';
 
 interface WidgetFactory {
     widget?: TypeWidget;
@@ -35,9 +35,9 @@ const widgetFactories: { [type: string]: WidgetFactory } = {
         dataTypes: ['id'],
         widget: IdWidget,
     },
-    ref: {
+    pick: {
         dataTypes: ['id'],
-        widget: RefWidget,
+        widget: PickWidget,
     },
     text: stringWidget,
     string: stringWidget,
@@ -174,7 +174,6 @@ export function factory(context: Context, itemSchema: ItemSchema, children: Reac
                 break;
             case 'group':
                 return <span>impletment group</span>;
-            case 'ref':
         }
         //label = uiLabel || name;
     }

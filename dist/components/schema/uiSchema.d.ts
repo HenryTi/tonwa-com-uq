@@ -7,9 +7,9 @@ import { IValuesView } from './IValuesView';
 import { FieldRule } from '../inputRules';
 import { ChangedHandler, ChangingHandler, PickId } from '../../ui';
 export declare type TypeWidget = new (context: Context, itemSchema: ItemSchema, fieldProps: FieldProps, children: React.ReactNode) => Widget;
-export declare type UiType = 'form' | 'arr' | 'group' | 'button' | 'submit' | 'custom' | 'image' | 'id' | 'ref' | 'text' | 'textarea' | 'password' | 'date' | 'datetime' | 'select' | 'url' | 'email' | 'time' | 'updown' | 'number' | 'color' | 'checkbox' | 'checkboxes' | 'radio' | 'range' | 'tagSingle' | 'tagMulti';
-export interface Ref<T = any> {
-    render(): JSX.Element;
+export declare type UiType = 'form' | 'arr' | 'group' | 'button' | 'submit' | 'custom' | 'image' | 'id' | 'pick' | 'text' | 'textarea' | 'password' | 'date' | 'datetime' | 'select' | 'url' | 'email' | 'time' | 'updown' | 'number' | 'color' | 'checkbox' | 'checkboxes' | 'radio' | 'range' | 'tagSingle' | 'tagMulti';
+export interface Pick<T = any> {
+    ref(): JSX.Element;
     pick(): Promise<T>;
 }
 export interface UiItem {
@@ -33,9 +33,9 @@ export interface UiCustom extends UiItem {
     widget: 'custom';
     WidgetClass: TypeWidget;
 }
-export interface UiRef extends UiItem {
-    widget: 'ref';
-    ref: Ref;
+export interface UiPick extends UiItem {
+    widget: 'pick';
+    pick: Pick;
 }
 export interface UiImageItem extends UiItem {
     widget: 'image';

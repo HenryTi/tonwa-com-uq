@@ -17,7 +17,7 @@ var buttonWidget_1 = require("./buttonWidget");
 var arrComponent_1 = require("./arrComponent");
 var imageWidget_1 = require("./imageWidget");
 var tagWidget_1 = require("./tagWidget");
-var refWidget_1 = require("./refWidget");
+var pickWidget_1 = require("./pickWidget");
 ;
 var stringWidget = {
     dataTypes: ['integer', 'number', 'string'],
@@ -28,9 +28,9 @@ var widgetFactories = {
         dataTypes: ['id'],
         widget: idWidget_1.IdWidget,
     },
-    ref: {
+    pick: {
         dataTypes: ['id'],
-        widget: refWidget_1.RefWidget,
+        widget: pickWidget_1.PickWidget,
     },
     text: stringWidget,
     string: stringWidget,
@@ -164,7 +164,6 @@ function factory(context, itemSchema, children, fieldProps) {
                 break;
             case 'group':
                 return (0, jsx_runtime_1.jsx)("span", { children: "impletment group" }, void 0);
-            case 'ref':
         }
         //label = uiLabel || name;
     }

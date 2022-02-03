@@ -9,14 +9,14 @@ import { ChangedHandler, ChangingHandler, PickId } from '../../ui';
 export type TypeWidget = new (context: Context, itemSchema: ItemSchema, fieldProps: FieldProps, children: React.ReactNode) => Widget;
 
 export type UiType = 'form' | 'arr' | 'group' | 'button' | 'submit' | 'custom' | 'image'
-    | 'id' | 'ref'
+    | 'id' | 'pick'
     | 'text' | 'textarea' | 'password'
     | 'date' | 'datetime' | 'select' | 'url' | 'email' | 'time'
     | 'updown' | 'number' | 'color' | 'checkbox' | 'checkboxes' | 'radio' | 'range'
     | 'tagSingle' | 'tagMulti';
 
-export interface Ref<T = any> {
-    render(): JSX.Element;
+export interface Pick<T = any> {
+    ref(): JSX.Element;
     pick(): Promise<T>;
 }
 
@@ -46,9 +46,9 @@ export interface UiCustom extends UiItem {
     WidgetClass: TypeWidget;
 }
 
-export interface UiRef extends UiItem {
-    widget: 'ref';
-    ref: Ref;
+export interface UiPick extends UiItem {
+    widget: 'pick';
+    pick: Pick;
 }
 
 export interface UiImageItem extends UiItem {

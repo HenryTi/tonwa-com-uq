@@ -1,20 +1,20 @@
 import { Widget } from './widget';
-import { UiRef } from '../../schema';
+import { UiPick } from '../../schema';
 import { runInAction } from 'mobx';
 
-export class RefWidget extends Widget {
-    protected get ui(): UiRef { return this._ui as UiRef };
+export class PickWidget extends Widget {
+    protected get ui(): UiPick { return this._ui as UiPick };
 
     setReadOnly(value: boolean) { this.readOnly = value }
     setDisabled(value: boolean) { this.disabled = value }
 
     protected onClick = async () => {
-        let ref = this.ui?.ref;
-        if (ref === undefined) {
-            alert('no ref defined!');
+        let pick = this.ui?.pick;
+        if (pick === undefined) {
+            alert('no pick defined!');
             return;
         }
-        let id = await ref.pick();
+        let id = await pick.pick();
         runInAction(() => {
             this.setDataValue(id);
             this.clearError();
@@ -28,10 +28,10 @@ export class RefWidget extends Widget {
     }
 
     render() {
-        let ref = this.ui?.ref;
-        if (ref === undefined) {
-            return <span>no ref defined!</span>;
+        let pick = this.ui?.pick;
+        if (pick === undefined) {
+            return <span>no pick defined!</span>;
         }
-        return <div onClick={this.onClick}>{ref.render()}</div>;
+        return <div className={this.className + ' cursor-pointer '} onClick={this.onClick}>{pick.ref()}</div>;
     }
 }
