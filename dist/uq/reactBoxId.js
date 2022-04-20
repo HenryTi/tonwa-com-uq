@@ -49,10 +49,10 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.tv = exports.ReactBoxId = void 0;
 var jsx_runtime_1 = require("react/jsx-runtime");
-var mobx_react_1 = require("mobx-react");
-var tonwa_core_1 = require("tonwa-core");
+//import { observer } from 'mobx-react';
+var tonwa_uq_1 = require("tonwa-uq");
 var TuidContent = function (tuidName, values, x) {
-    return (0, jsx_runtime_1.jsxs)(jsx_runtime_1.Fragment, { children: [tuidName, ": ", (0, tonwa_core_1.uqStringify)(values)] }, void 0);
+    return (0, jsx_runtime_1.jsxs)(jsx_runtime_1.Fragment, { children: [tuidName, ": ", (0, tonwa_uq_1.uqStringify)(values)] }, void 0);
 };
 var ReactBoxId = /** @class */ (function () {
     function ReactBoxId(id, tuid, ui) {
@@ -155,7 +155,7 @@ function boxIdContent(bi, ui, x) {
     }
     return boxId.render(ui, x);
 }
-var Tv = (0, mobx_react_1.observer)(function (_a) {
+var Tv = function (_a) {
     var tuidValue = _a.tuidValue, ui = _a.ui, x = _a.x, nullUI = _a.nullUI;
     if (tuidValue === undefined) {
         if (nullUI === undefined)
@@ -186,7 +186,7 @@ var Tv = (0, mobx_react_1.observer)(function (_a) {
         case 'number':
             return (0, jsx_runtime_1.jsxs)(jsx_runtime_1.Fragment, { children: ["id...", tuidValue] }, void 0);
     }
-});
+};
 var tv = function (tuidValue, ui, x, nullUI) {
     return (0, jsx_runtime_1.jsx)(Tv, { tuidValue: tuidValue, ui: ui, x: x, nullUI: nullUI }, void 0);
 };

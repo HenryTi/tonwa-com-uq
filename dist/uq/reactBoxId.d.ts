@@ -1,5 +1,5 @@
 /// <reference types="react" />
-import { Tuid, BoxId } from 'tonwa-core';
+import { Tuid, BoxId } from 'tonwa-uq';
 export declare class ReactBoxId implements BoxId {
     readonly id: number;
     protected tuid: Tuid;

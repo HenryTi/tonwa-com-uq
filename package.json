@@ -1,7 +1,7 @@
 {
-    "name": "tonwa-com",
-    "version": "0.1.1",
-    "description": "ui components",
+    "name": "tonwa-com-uq",
+    "version": "0.1.0",
+    "description": "uq ui components",
     "private": false,
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
@@ -10,7 +10,7 @@
     ],
     "repository": {
         "type": "git",
-        "url": "https://github.com/henryti/tonwa-com"
+        "url": "https://github.com/henryti/tonwa-com-uq"
     },
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
@@ -24,10 +24,11 @@
         "@types/react": "^16.14.11",
         "@types/react-dom": "^16.9.14",
         "bootstrap": "^5.0.2",
-        "font-awesome": "^4.7.0",
         "react": "^17.0.2",
         "react-dom": "^17.0.2",
         "react-router-dom": "^6.3.0",
+        "tonwa-com": "^0.1.1",
+        "tonwa-uq": "^0.1.1",
         "typescript": "^4.0.0",
         "valtio": "^1.5.2"
     }

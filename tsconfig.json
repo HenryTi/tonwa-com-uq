@@ -13,7 +13,7 @@
         "declaration": true,
         "composite": true,
         "outDir": "./dist",
-        "rootDir": "tonwa-com",
+        "rootDir": "tonwa-com-uq",
         "module": "commonjs",
         "moduleResolution": "node",
         "preserveSymlinks": true,
@@ -27,7 +27,7 @@
         "jsx": "react-jsx",
         "strictNullChecks": false,
         "experimentalDecorators": true,
-        "baseUrl": "tonwa-com/",
+        "baseUrl": "tonwa-com-uq/",
         "typeRoots": [
             "node_modules/@types",
         ]

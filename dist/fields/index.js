@@ -10,17 +10,6 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(require("./String"), exports);
-__exportStar(require("./Password"), exports);
-__exportStar(require("./Number"), exports);
-__exportStar(require("./Check"), exports);
-__exportStar(require("./Pick"), exports);
-__exportStar(require("./Select"), exports);
-__exportStar(require("./DateTime"), exports);
-__exportStar(require("./TextArea"), exports);
-__exportStar(require("./Radio"), exports);
-__exportStar(require("./Range"), exports);
-__exportStar(require("./CharInput"), exports);
-__exportStar(require("./field"), exports);
-__exportStar(require("./Rule"), exports);
+__exportStar(require("./FieldsForm"), exports);
+__exportStar(require("./FieldsDetail"), exports);
 //# sourceMappingURL=index.js.map
