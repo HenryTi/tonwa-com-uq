@@ -4,7 +4,6 @@ export * from './nav';
 export * from './AppNav';
 export * from './AppPageStackTemplate';
 export * from './AppTabsTemplate';
-export * from './AppContainer';
 export * from './PageTabs';
 export * from './StackContainer';
 export * from './PageTemplate';

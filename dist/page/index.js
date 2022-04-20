@@ -16,7 +16,6 @@ __exportStar(require("./nav"), exports);
 __exportStar(require("./AppNav"), exports);
 __exportStar(require("./AppPageStackTemplate"), exports);
 __exportStar(require("./AppTabsTemplate"), exports);
-__exportStar(require("./AppContainer"), exports);
 __exportStar(require("./PageTabs"), exports);
 __exportStar(require("./StackContainer"), exports);
 __exportStar(require("./PageTemplate"), exports);

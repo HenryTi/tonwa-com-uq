@@ -19,7 +19,7 @@ var nav_1 = require("./nav");
 var PageTemplate_1 = require("./PageTemplate");
 var useScroll_1 = require("./useScroll");
 require("font-awesome/css/font-awesome.min.css");
-//import { useContext } from "react";
+require("./tonwa.css");
 // unanthorized page
 function UPage(props) {
     var divRef = (0, useScroll_1.useScroll)();
