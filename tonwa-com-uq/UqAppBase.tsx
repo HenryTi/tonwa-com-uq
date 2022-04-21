@@ -1,12 +1,10 @@
 import React, { ReactNode, useContext, useEffect, useState } from 'react';
-import { NavigateFunction, useNavigate } from 'react-router-dom';
+import { BrowserRouter, NavigateFunction, useNavigate } from 'react-router-dom';
 import { AppNav } from 'tonwa-com';
 import { Guest, Hosts, LocalDb, NetProps, UqConfig, User, UserApi } from 'tonwa-uq';
-
 import { UQsLoader, Net } from "tonwa-uq";
 import { uqsProxy } from './uq';
 import { env, LocalData } from 'tonwa-com';
-//import { ObservableMap } from 'mobx';
 import { proxy, useSnapshot } from 'valtio';
 import { Spinner } from 'tonwa-com';
 import { AppNavContext } from 'tonwa-com';
@@ -155,9 +153,11 @@ export function UqAppBaseView<T extends UqAppBase>({ uqApp, children }: { uqApp:
     if (appInited === false) return <div className="p-5 text-center">
         <Spinner className="text-info" />
     </div>
-    return <UqAppContext.Provider value={uqApp}>
-        <AppNavContext.Provider value={appNav}>
-            <StackContainer stackItems={stack} />
-        </AppNavContext.Provider>
-    </UqAppContext.Provider>;
+    return <BrowserRouter>
+        <UqAppContext.Provider value={uqApp}>
+            <AppNavContext.Provider value={appNav}>
+                <StackContainer stackItems={stack} />
+            </AppNavContext.Provider>
+        </UqAppContext.Provider>
+    </BrowserRouter>;
 }

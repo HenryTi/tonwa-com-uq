@@ -90,7 +90,6 @@ var tonwa_uq_1 = require("tonwa-uq");
 var tonwa_uq_2 = require("tonwa-uq");
 var uq_1 = require("./uq");
 var tonwa_com_2 = require("tonwa-com");
-//import { ObservableMap } from 'mobx';
 var valtio_1 = require("valtio");
 var tonwa_com_3 = require("tonwa-com");
 var tonwa_com_4 = require("tonwa-com");
@@ -246,7 +245,7 @@ function UqAppBaseView(_a) {
     }, [uqApp, children, navigateFunc]);
     if (appInited === false)
         return (0, jsx_runtime_1.jsx)("div", __assign({ className: "p-5 text-center" }, { children: (0, jsx_runtime_1.jsx)(tonwa_com_3.Spinner, { className: "text-info" }, void 0) }), void 0);
-    return (0, jsx_runtime_1.jsx)(exports.UqAppContext.Provider, __assign({ value: uqApp }, { children: (0, jsx_runtime_1.jsx)(tonwa_com_4.AppNavContext.Provider, __assign({ value: appNav }, { children: (0, jsx_runtime_1.jsx)(tonwa_com_5.StackContainer, { stackItems: stack }, void 0) }), void 0) }), void 0);
+    return (0, jsx_runtime_1.jsx)(react_router_dom_1.BrowserRouter, { children: (0, jsx_runtime_1.jsx)(exports.UqAppContext.Provider, __assign({ value: uqApp }, { children: (0, jsx_runtime_1.jsx)(tonwa_com_4.AppNavContext.Provider, __assign({ value: appNav }, { children: (0, jsx_runtime_1.jsx)(tonwa_com_5.StackContainer, { stackItems: stack }, void 0) }), void 0) }), void 0) }, void 0);
 }
 exports.UqAppBaseView = UqAppBaseView;
 //# sourceMappingURL=UqAppBase.js.map
