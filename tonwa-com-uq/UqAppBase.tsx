@@ -153,11 +153,9 @@ export function UqAppBaseView<T extends UqAppBase>({ uqApp, children }: { uqApp:
     if (appInited === false) return <div className="p-5 text-center">
         <Spinner className="text-info" />
     </div>
-    return <BrowserRouter>
-        <UqAppContext.Provider value={uqApp}>
-            <AppNavContext.Provider value={appNav}>
-                <StackContainer stackItems={stack} />
-            </AppNavContext.Provider>
-        </UqAppContext.Provider>
-    </BrowserRouter>;
+    return <UqAppContext.Provider value={uqApp}>
+        <AppNavContext.Provider value={appNav}>
+            <StackContainer stackItems={stack} />
+        </AppNavContext.Provider>
+    </UqAppContext.Provider>;
 }
