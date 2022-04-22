@@ -93,6 +93,7 @@ export abstract class UqAppBase<U = any> {
     initErrors: string[];
     async init(initPage: React.ReactNode, navigateFunc: NavigateFunction): Promise<void> {
         if (this.initCalled === true) return;
+        this.initCalled = true;
         //if (this.responsive.user?.id === this.uqsUserId) return;
         await this.net.init();
         let user = this.localData.user.get();

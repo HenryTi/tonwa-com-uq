@@ -161,6 +161,7 @@ var UqAppBase = /** @class */ (function () {
                     case 0:
                         if (this.initCalled === true)
                             return [2 /*return*/];
+                        this.initCalled = true;
                         //if (this.responsive.user?.id === this.uqsUserId) return;
                         return [4 /*yield*/, this.net.init()];
                     case 1:
