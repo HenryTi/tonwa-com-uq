@@ -60,10 +60,6 @@ export abstract class UqAppBase<U = any> {
         this.userApi = this.net.userApi;
     }
 
-    initAppNav(initPage: React.ReactNode, navigateFunc: NavigateFunction) {
-        this.appNav.init(initPage, navigateFunc);
-    }
-
     logined(user: User) {
         this.net.logoutApis();
         this.responsive.user = user;
@@ -88,11 +84,12 @@ export abstract class UqAppBase<U = any> {
         this.localData.saveToLocalStorage();
     }
 
-    private uqsUserId: number = -1;
-    async init(): Promise<any> {
-        let { version } = this.appConfig;
-        if (this.responsive.user?.id === this.uqsUserId) return;
-
+    //private uqsUserId: number = -1;
+    private initCalled = false;
+    initErrors: string[];
+    async init(initPage: React.ReactNode, navigateFunc: NavigateFunction): Promise<boolean> {
+        if (this.initCalled === true) return;
+        //if (this.responsive.user?.id === this.uqsUserId) return;
         await this.net.init();
         let user = this.localData.user.get();
         if (user) {
@@ -111,12 +108,17 @@ export abstract class UqAppBase<U = any> {
             this.localData.guest.set(guest);
         }
 
-        this.uqsUserId = this.responsive.user?.id;
+        //this.uqsUserId = this.responsive.user?.id;
+        let { version } = this.appConfig;
         let uqsLoader = new UQsLoader(this.net, version, this.uqConfigs);
 
-        let retErrors = await uqsLoader.build();
+        this.initErrors = await uqsLoader.build();
         this.uqs = uqsProxy(uqsLoader.uqsMan) as any; //  this.uqsMan.proxy;
-        return retErrors;
+        if (!this.initErrors) {
+            this.appNav.init(initPage, navigateFunc);
+            return true;
+        }
+        return false;
     }
 }
 
@@ -144,15 +146,26 @@ export function UqAppBaseView<T extends UqAppBase>({ uqApp, children }: { uqApp:
     let navigateFunc = useNavigate();
     useEffect(() => {
         async function appInit() {
-            await uqApp.init();
-            uqApp.initAppNav(children, navigateFunc);
+            await uqApp.init(children, navigateFunc);
             setAppInited(true);
         }
         appInit();
     }, [uqApp, children, navigateFunc]);
-    if (appInited === false) return <div className="p-5 text-center">
-        <Spinner className="text-info" />
-    </div>
+    if (appInited === false) {
+        return <div className="p-5 text-center">
+            <Spinner className="text-info" />
+        </div>;
+    }
+    if (uqApp.initErrors) {
+        return <div>
+            <div>uq app start failed. init errors: </div>
+            <ul className="text-danger">
+                {
+                    uqApp.initErrors.map((v, index) => <li key={index}>{v}</li>)
+                }
+            </ul>
+        </div>;
+    }
     return <UqAppContext.Provider value={uqApp}>
         <AppNavContext.Provider value={appNav}>
             <StackContainer stackItems={stack} />

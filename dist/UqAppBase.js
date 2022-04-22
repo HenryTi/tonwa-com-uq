@@ -97,7 +97,8 @@ var tonwa_com_5 = require("tonwa-com");
 var uqAppId = 1;
 var UqAppBase = /** @class */ (function () {
     function UqAppBase(appConfig, uqConfigs) {
-        this.uqsUserId = -1;
+        //private uqsUserId: number = -1;
+        this.initCalled = false;
         this.uqAppBaseId = uqAppId++;
         this.appConfig = appConfig;
         this.uqConfigs = uqConfigs;
@@ -118,9 +119,6 @@ var UqAppBase = /** @class */ (function () {
         this.appNav = new tonwa_com_1.AppNav();
         this.userApi = this.net.userApi;
     }
-    UqAppBase.prototype.initAppNav = function (initPage, navigateFunc) {
-        this.appNav.init(initPage, navigateFunc);
-    };
     UqAppBase.prototype.logined = function (user) {
         this.net.logoutApis();
         this.responsive.user = user;
@@ -152,19 +150,19 @@ var UqAppBase = /** @class */ (function () {
     UqAppBase.prototype.saveLocalData = function () {
         this.localData.saveToLocalStorage();
     };
-    UqAppBase.prototype.init = function () {
-        var _a, _b;
+    UqAppBase.prototype.init = function (initPage, navigateFunc) {
         return __awaiter(this, void 0, void 0, function () {
-            var version, user, guest, uqsLoader, retErrors;
-            return __generator(this, function (_c) {
-                switch (_c.label) {
+            var user, guest, version, uqsLoader, _a;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
                     case 0:
-                        version = this.appConfig.version;
-                        if (((_a = this.responsive.user) === null || _a === void 0 ? void 0 : _a.id) === this.uqsUserId)
+                        if (this.initCalled === true)
                             return [2 /*return*/];
+                        //if (this.responsive.user?.id === this.uqsUserId) return;
                         return [4 /*yield*/, this.net.init()];
                     case 1:
-                        _c.sent();
+                        //if (this.responsive.user?.id === this.uqsUserId) return;
+                        _b.sent();
                         user = this.localData.user.get();
                         if (!user) return [3 /*break*/, 2];
                         this.logined(user);
@@ -174,8 +172,8 @@ var UqAppBase = /** @class */ (function () {
                         if (!(guest === undefined)) return [3 /*break*/, 4];
                         return [4 /*yield*/, this.net.userApi.guest()];
                     case 3:
-                        guest = _c.sent();
-                        _c.label = 4;
+                        guest = _b.sent();
+                        _b.label = 4;
                     case 4:
                         if (!guest) {
                             debugger;
@@ -183,15 +181,20 @@ var UqAppBase = /** @class */ (function () {
                         }
                         this.net.setCenterToken(0, guest.token);
                         this.localData.guest.set(guest);
-                        _c.label = 5;
+                        _b.label = 5;
                     case 5:
-                        this.uqsUserId = (_b = this.responsive.user) === null || _b === void 0 ? void 0 : _b.id;
+                        version = this.appConfig.version;
                         uqsLoader = new tonwa_uq_2.UQsLoader(this.net, version, this.uqConfigs);
+                        _a = this;
                         return [4 /*yield*/, uqsLoader.build()];
                     case 6:
-                        retErrors = _c.sent();
+                        _a.initErrors = _b.sent();
                         this.uqs = (0, uq_1.uqsProxy)(uqsLoader.uqsMan); //  this.uqsMan.proxy;
-                        return [2 /*return*/, retErrors];
+                        if (!this.initErrors) {
+                            this.appNav.init(initPage, navigateFunc);
+                            return [2 /*return*/, true];
+                        }
+                        return [2 /*return*/, false];
                 }
             });
         });
@@ -231,10 +234,9 @@ function UqAppBaseView(_a) {
             return __awaiter(this, void 0, void 0, function () {
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, uqApp.init()];
+                        case 0: return [4 /*yield*/, uqApp.init(children, navigateFunc)];
                         case 1:
                             _a.sent();
-                            uqApp.initAppNav(children, navigateFunc);
                             setAppInited(true);
                             return [2 /*return*/];
                     }
@@ -243,8 +245,12 @@ function UqAppBaseView(_a) {
         }
         appInit();
     }, [uqApp, children, navigateFunc]);
-    if (appInited === false)
+    if (appInited === false) {
         return (0, jsx_runtime_1.jsx)("div", __assign({ className: "p-5 text-center" }, { children: (0, jsx_runtime_1.jsx)(tonwa_com_3.Spinner, { className: "text-info" }, void 0) }), void 0);
+    }
+    if (uqApp.initErrors) {
+        return (0, jsx_runtime_1.jsxs)("div", { children: [(0, jsx_runtime_1.jsx)("div", { children: "uq app start failed. init errors: " }, void 0), (0, jsx_runtime_1.jsx)("ul", __assign({ className: "text-danger" }, { children: uqApp.initErrors.map(function (v, index) { return (0, jsx_runtime_1.jsx)("li", { children: v }, index); }) }), void 0)] }, void 0);
+    }
     return (0, jsx_runtime_1.jsx)(exports.UqAppContext.Provider, __assign({ value: uqApp }, { children: (0, jsx_runtime_1.jsx)(tonwa_com_4.AppNavContext.Provider, __assign({ value: appNav }, { children: (0, jsx_runtime_1.jsx)(tonwa_com_5.StackContainer, { stackItems: stack }, void 0) }), void 0) }), void 0);
 }
 exports.UqAppBaseView = UqAppBaseView;

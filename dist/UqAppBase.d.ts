@@ -28,12 +28,12 @@ export declare abstract class UqAppBase<U = any> {
     guest: number;
     uqs: U;
     constructor(appConfig: AppConfig, uqConfigs: UqConfig[]);
-    initAppNav(initPage: React.ReactNode, navigateFunc: NavigateFunction): void;
     logined(user: User): void;
     setUserProp(propName: string, value: any): Promise<void>;
     saveLocalData(): void;
-    private uqsUserId;
-    init(): Promise<any>;
+    private initCalled;
+    initErrors: string[];
+    init(initPage: React.ReactNode, navigateFunc: NavigateFunction): Promise<boolean>;
 }
 export declare const UqAppContext: React.Context<any>;
 export declare function useUqAppBase<U, T extends UqAppBase<U> = UqAppBase<U>>(): T;
