@@ -84,10 +84,14 @@ export abstract class UqAppBase<U = any> {
         this.localData.saveToLocalStorage();
     }
 
+    protected onInited(): Promise<void> {
+        return;
+    }
+
     //private uqsUserId: number = -1;
     private initCalled = false;
     initErrors: string[];
-    async init(initPage: React.ReactNode, navigateFunc: NavigateFunction): Promise<boolean> {
+    async init(initPage: React.ReactNode, navigateFunc: NavigateFunction): Promise<void> {
         if (this.initCalled === true) return;
         //if (this.responsive.user?.id === this.uqsUserId) return;
         await this.net.init();
@@ -116,9 +120,8 @@ export abstract class UqAppBase<U = any> {
         this.uqs = uqsProxy(uqsLoader.uqsMan) as any; //  this.uqsMan.proxy;
         if (!this.initErrors) {
             this.appNav.init(initPage, navigateFunc);
-            return true;
+            await this.onInited();
         }
-        return false;
     }
 }
 

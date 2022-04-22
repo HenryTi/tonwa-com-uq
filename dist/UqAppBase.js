@@ -150,6 +150,9 @@ var UqAppBase = /** @class */ (function () {
     UqAppBase.prototype.saveLocalData = function () {
         this.localData.saveToLocalStorage();
     };
+    UqAppBase.prototype.onInited = function () {
+        return;
+    };
     UqAppBase.prototype.init = function (initPage, navigateFunc) {
         return __awaiter(this, void 0, void 0, function () {
             var user, guest, version, uqsLoader, _a;
@@ -190,11 +193,13 @@ var UqAppBase = /** @class */ (function () {
                     case 6:
                         _a.initErrors = _b.sent();
                         this.uqs = (0, uq_1.uqsProxy)(uqsLoader.uqsMan); //  this.uqsMan.proxy;
-                        if (!this.initErrors) {
-                            this.appNav.init(initPage, navigateFunc);
-                            return [2 /*return*/, true];
-                        }
-                        return [2 /*return*/, false];
+                        if (!!this.initErrors) return [3 /*break*/, 8];
+                        this.appNav.init(initPage, navigateFunc);
+                        return [4 /*yield*/, this.onInited()];
+                    case 7:
+                        _b.sent();
+                        _b.label = 8;
+                    case 8: return [2 /*return*/];
                 }
             });
         });

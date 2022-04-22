@@ -31,9 +31,10 @@ export declare abstract class UqAppBase<U = any> {
     logined(user: User): void;
     setUserProp(propName: string, value: any): Promise<void>;
     saveLocalData(): void;
+    protected onInited(): Promise<void>;
     private initCalled;
     initErrors: string[];
-    init(initPage: React.ReactNode, navigateFunc: NavigateFunction): Promise<boolean>;
+    init(initPage: React.ReactNode, navigateFunc: NavigateFunction): Promise<void>;
 }
 export declare const UqAppContext: React.Context<any>;
 export declare function useUqAppBase<U, T extends UqAppBase<U> = UqAppBase<U>>(): T;
