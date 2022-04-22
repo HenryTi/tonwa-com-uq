@@ -1,6 +1,6 @@
 {
     "name": "tonwa-com-uq",
-    "version": "0.1.4",
+    "version": "0.1.9",
     "description": "uq ui components",
     "private": false,
     "main": "dist/index.js",
@@ -28,8 +28,8 @@
         "react": "^18.0.0",
         "react-dom": "^18.0.0",
         "react-router-dom": "^6.3.0",
-        "tonwa-com": "^0.1.5",
-        "tonwa-uq": "^0.1.3",
+        "tonwa-com": "^0.1.6",
+        "tonwa-uq": "^0.1.5",
         "typescript": "^4.0.0",
         "valtio": "^1.5.2"
     }

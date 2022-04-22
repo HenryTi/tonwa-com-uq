@@ -1,5 +1,5 @@
 import React, { ReactNode, useContext, useEffect, useState } from 'react';
-import { BrowserRouter, NavigateFunction, useNavigate } from 'react-router-dom';
+import { NavigateFunction, useNavigate } from 'react-router-dom';
 import { AppNav } from 'tonwa-com';
 import { Guest, Hosts, LocalDb, NetProps, UqConfig, User, UserApi } from 'tonwa-uq';
 import { UQsLoader, Net } from "tonwa-uq";
