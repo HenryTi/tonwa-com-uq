@@ -26,7 +26,7 @@
         "noUnusedLocals": false,
         "jsx": "react-jsx",
         "strictNullChecks": false,
-        "baseUrl": "tonwa-uq-app/"
+        "baseUrl": "tonwa-uq-app"
     },
     "exclude": [
         "node_modules",
