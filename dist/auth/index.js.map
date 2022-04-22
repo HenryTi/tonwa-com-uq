@@ -1,1 +1,1 @@
-{"version":3,"file":"index.js","sourceRoot":"","sources":["../../tonwa-com-uq/auth/index.ts"],"names":[],"mappings":";;;;;;;;;;;;;AAAA,iCAAgC;AAAvB,8FAAA,KAAK,OAAA;AACd,mCAAkC;AAAzB,gGAAA,MAAM,OAAA;AACf,gDAA+C;AAAtC,oGAAA,QAAQ,OAAA;AACjB,mDAAiC;AACjC,6CAA2B"}
+{"version":3,"file":"index.js","sourceRoot":"","sources":["../../tonwa-uq-app/auth/index.ts"],"names":[],"mappings":";;;;;;;;;;;;;AAAA,iCAAgC;AAAvB,8FAAA,KAAK,OAAA;AACd,mCAAkC;AAAzB,gGAAA,MAAM,OAAA;AACf,gDAA+C;AAAtC,oGAAA,QAAQ,OAAA;AACjB,mDAAiC;AACjC,6CAA2B"}

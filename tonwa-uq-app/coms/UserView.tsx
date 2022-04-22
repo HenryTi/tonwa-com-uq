@@ -18,10 +18,8 @@ export function UserView({ id, assigned, className, Template }: Props) {
         async function loadUser() {
             let ret = usersCache[id];
             if (ret === undefined) {
-                console.log('user view start', Date.now());
                 ret = await app.userApi.userFromId(id);
                 usersCache[id] = ret === undefined ? null : ret;
-                console.log('user view finished', Date.now());
             }
             setUser(ret);
         }

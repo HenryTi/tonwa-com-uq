@@ -65,12 +65,10 @@ function UserView(_a) {
                         case 0:
                             ret = usersCache[id];
                             if (!(ret === undefined)) return [3 /*break*/, 2];
-                            console.log('user view start', Date.now());
                             return [4 /*yield*/, app.userApi.userFromId(id)];
                         case 1:
                             ret = _a.sent();
                             usersCache[id] = ret === undefined ? null : ret;
-                            console.log('user view finished', Date.now());
                             _a.label = 2;
                         case 2:
                             setUser(ret);
