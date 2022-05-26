@@ -1,7 +1,7 @@
 {
-    "name": "tonwa-uq-app",
+    "name": "tonwa-uq-com",
     "version": "0.1.14",
-    "description": "uq app components",
+    "description": "uq components",
     "private": false,
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
@@ -11,7 +11,7 @@
     ],
     "repository": {
         "type": "git",
-        "url": "https://github.com/henryti/tonwa-uq-app"
+        "url": "https://github.com/henryti/tonwa-uq-com"
     },
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
