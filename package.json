@@ -1,6 +1,6 @@
 {
     "name": "tonwa-uq-com",
-    "version": "0.1.14",
+    "version": "0.1.15",
     "description": "uq components",
     "private": false,
     "main": "dist/index.js",

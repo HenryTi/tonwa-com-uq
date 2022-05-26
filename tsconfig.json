@@ -13,7 +13,7 @@
         "declaration": true,
         "composite": true,
         "outDir": "./dist",
-        "rootDir": "tonwa-uq-app",
+        "rootDir": "tonwa-uq-com",
         "module": "commonjs",
         "moduleResolution": "node",
         "preserveSymlinks": true,
@@ -26,7 +26,7 @@
         "noUnusedLocals": false,
         "jsx": "react-jsx",
         "strictNullChecks": false,
-        "baseUrl": "tonwa-uq-app"
+        "baseUrl": "tonwa-uq-com"
     },
     "exclude": [
         "node_modules",
