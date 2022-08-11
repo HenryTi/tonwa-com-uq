@@ -39,7 +39,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AutoRefresh = void 0;
 var gaps = [10, 3, 3, 3, 3, 3, 5, 5, 5, 5, 5, 5, 5, 5, 10, 10, 10, 10, 15, 15, 15, 30, 30, 60];
 var AutoRefresh = /** @class */ (function () {
-    function AutoRefresh(poke, refreshAction) {
+    function AutoRefresh(uq, refreshAction) {
         var _this = this;
         this.refreshTime = Date.now() / 1000;
         // 数据服务器提醒客户端刷新，下面代码重新调入的数据
@@ -62,7 +62,7 @@ var AutoRefresh = /** @class */ (function () {
         this.tick = 0;
         this.gapIndex = 0;
         this.callTick = function () { return __awaiter(_this, void 0, void 0, function () {
-            var ret, v, _a;
+            var poked, _a;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
@@ -74,13 +74,10 @@ var AutoRefresh = /** @class */ (function () {
                         this.tick = 0;
                         if (this.gapIndex < gaps.length - 1)
                             ++this.gapIndex;
-                        return [4 /*yield*/, this.poke()];
+                        return [4 /*yield*/, this.uq.sys.Poked()];
                     case 1:
-                        ret = _b.sent();
-                        v = ret.ret[0];
-                        if (v === undefined)
-                            return [2 /*return*/];
-                        if (!v.poke)
+                        poked = _b.sent();
+                        if (poked === true)
                             return [2 /*return*/];
                         this.gapIndex = 1;
                         return [4 /*yield*/, this.refresh()];
@@ -94,7 +91,7 @@ var AutoRefresh = /** @class */ (function () {
                 }
             });
         }); };
-        this.poke = poke;
+        this.uq = uq;
         this.refreshAction = refreshAction;
     }
     AutoRefresh.prototype.start = function () {

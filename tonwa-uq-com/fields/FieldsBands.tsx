@@ -8,7 +8,7 @@ export interface FieldsBandsProps {
 }
 export function createBandsFromFields(
     props: FieldsBandsProps,
-    sep?: number | JSX.Element
+    sep?: number | JSX.Element,
 ) {
     let count = 0;
     let { fields, replacer } = props;
@@ -20,6 +20,7 @@ export function createBandsFromFields(
         if (replace) {
             return (<React.Fragment key={index}>{replace}</React.Fragment>);
         }
+        if (replace === null) return null;
 
         return (<Band key={index} label={name} sep={count > 1 ? sep : null}>
             {createInputFromField(v)}

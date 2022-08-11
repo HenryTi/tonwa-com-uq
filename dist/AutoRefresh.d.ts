@@ -1,12 +1,9 @@
+import { Uq } from "tonwa-uq";
 export declare class AutoRefresh {
-    private readonly poke;
+    private readonly uq;
     private readonly refreshAction;
     private timer;
-    constructor(poke: () => Promise<{
-        ret: {
-            poke: number;
-        }[];
-    }>, refreshAction: Promise<void>);
+    constructor(uq: Uq, refreshAction: Promise<void>);
     start(): void;
     stop(): void;
     private refreshTime;

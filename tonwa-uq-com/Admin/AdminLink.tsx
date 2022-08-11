@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { ReactNode, useCallback, useEffect, useState } from "react";
 import { useNav, Spinner } from "tonwa-com";
 import { AdminPage } from "./AdminPage";
 
@@ -27,9 +27,10 @@ export interface AdminProps extends FuncProps {
 }
 
 interface Props extends FuncProps {
+    children: React.ReactNode;
     me: number;
     loadAdmins: () => Promise<any[]>;
-    LinkContent: (props: { onClick: () => void }) => JSX.Element;
+    LinkContainer: (props: { onClick: () => void; children: ReactNode; }) => JSX.Element;
 }
 
 interface AdminState {
@@ -38,13 +39,20 @@ interface AdminState {
     admins: Admin[];
 }
 
-export function AdminLink({ LinkContent, me, loadAdmins, setAdmin, setMeAdmin }: Props) {
+// role: 1=系统管理员，可以多个；2=业务管理员，管理角色，不能更改系统管理员
+// role = -1: 暂停系统管理员，24小时内，可以自己恢复。超过24小时，不可以自己恢复
+// 也许以后需要其它的角色
+// 这个管理员只能通过admins来设置
+export function AdminLink({ LinkContainer, me, loadAdmins, setAdmin, setMeAdmin, children }: Props) {
     let nav = useNav();
     const [adminState, setAdminState] = useState<AdminState>(null);
 
     let load = useCallback(async (): Promise<void> => {
         let retAdmins = await loadAdmins();
-        if (!retAdmins) return;
+        if (!retAdmins) {
+            setAdminState(undefined);
+            return;
+        }
         //await this.loadUserNames(retAdmins);
         let state: AdminState = {
             meAdmin: undefined,
@@ -76,7 +84,10 @@ export function AdminLink({ LinkContent, me, loadAdmins, setAdmin, setMeAdmin }:
     }, [load]);
 
     if (adminState === null) {
-        return <Spinner />;
+        return <LinkContainer onClick={() => null}><Spinner /><span /></LinkContainer>;
+    }
+    if (adminState === undefined) {
+        return null;
     }
     let { meAdmin, sysAdmins, admins } = adminState;
     if (meAdmin === undefined) return null;
@@ -102,5 +113,5 @@ export function AdminLink({ LinkContent, me, loadAdmins, setAdmin, setMeAdmin }:
                 setAdmin={nSetAdmin} setMeAdmin={nSetMeAdmin} />
         )
     }
-    return <LinkContent onClick={onClick} />;
+    return <LinkContainer onClick={onClick}>{children}</LinkContainer>;
 }

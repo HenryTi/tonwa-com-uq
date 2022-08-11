@@ -66,6 +66,8 @@ function createBandsFromFields(props, sep) {
         if (replace) {
             return ((0, jsx_runtime_1.jsx)(react_1.default.Fragment, { children: replace }, index));
         }
+        if (replace === null)
+            return null;
         return ((0, jsx_runtime_1.jsx)(tonwa_com_1.Band, __assign({ label: name, sep: count > 1 ? sep : null }, { children: createInputFromField(v) }), index));
     });
 }

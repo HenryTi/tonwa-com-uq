@@ -1,4 +1,4 @@
-/// <reference types="react" />
+import { ReactNode } from "react";
 export declare enum EnumAdminRoleInEdit {
     sys = 1,
     admin = 2,
@@ -25,11 +25,13 @@ export interface AdminProps extends FuncProps {
     me: number;
 }
 interface Props extends FuncProps {
+    children: React.ReactNode;
     me: number;
     loadAdmins: () => Promise<any[]>;
-    LinkContent: (props: {
+    LinkContainer: (props: {
         onClick: () => void;
+        children: ReactNode;
     }) => JSX.Element;
 }
-export declare function AdminLink({ LinkContent, me, loadAdmins, setAdmin, setMeAdmin }: Props): JSX.Element;
+export declare function AdminLink({ LinkContainer, me, loadAdmins, setAdmin, setMeAdmin, children }: Props): JSX.Element;
 export {};

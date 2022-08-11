@@ -1,14 +1,16 @@
 import React, { ReactNode, useContext, useEffect, useState } from 'react';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
 import { AppNav } from 'tonwa-com';
-import { Guest, Hosts, LocalDb, NetProps, UqConfig, User, UserApi } from 'tonwa-uq';
-import { UQsLoader, Net } from "tonwa-uq";
-import { uqsProxy } from './uq';
+import { Guest, LocalDb, NetProps, UqConfig, User, UserApi } from 'tonwa-uq';
+import { createUQsMan, Net, Hosts } from "tonwa-uq";
+// UQsLoader, 
+// import { uqsProxy } from './uq';
 import { env, LocalData } from 'tonwa-com';
 import { proxy, useSnapshot } from 'valtio';
 import { Spinner } from 'tonwa-com';
 import { AppNavContext } from 'tonwa-com';
 import { StackContainer } from 'tonwa-com';
+import { uqsProxy } from './uq-old';
 
 export interface AppConfig { //extends UqsConfig {
     center: string;
@@ -25,6 +27,7 @@ let uqAppId = 1;
 export abstract class UqAppBase<U = any> {
     private readonly appConfig: AppConfig;
     private readonly uqConfigs: UqConfig[];
+    private readonly uqsSchema: { [uq: string]: any; };
     private localData: LocalData;
     readonly uqAppBaseId: number;
     readonly net: Net;
@@ -37,10 +40,11 @@ export abstract class UqAppBase<U = any> {
     guest: number;
     uqs: U;
 
-    constructor(appConfig: AppConfig, uqConfigs: UqConfig[]) {
+    constructor(appConfig: AppConfig, uqConfigs: UqConfig[], uqsSchema: { [uq: string]: any; }) {
         this.uqAppBaseId = uqAppId++;
         this.appConfig = appConfig;
         this.uqConfigs = uqConfigs;
+        this.uqsSchema = uqsSchema;
         this.version = appConfig.version;
         this.responsive = proxy({
             user: undefined,
@@ -114,15 +118,26 @@ export abstract class UqAppBase<U = any> {
         }
 
         //this.uqsUserId = this.responsive.user?.id;
-        let { version } = this.appConfig;
-        let uqsLoader = new UQsLoader(this.net, version, this.uqConfigs);
 
+        try {
+            let uqsMan = await createUQsMan(this.net, this.appConfig.version, this.uqConfigs, this.uqsSchema);
+            this.uqs = uqsProxy(uqsMan) as U;
+            this.appNav.init(initPage, navigateFunc);
+            await this.onInited();
+        }
+        catch (error) {
+            console.error(error);
+        }
+        /*
+        let { version } = this.appConfig;
+        let uqsLoader = new UQsLoader(this.net, version, this.uqConfigs, this.uqsSchema);
         this.initErrors = await uqsLoader.build();
         this.uqs = uqsProxy(uqsLoader.uqsMan) as any; //  this.uqsMan.proxy;
         if (!this.initErrors) {
             this.appNav.init(initPage, navigateFunc);
             await this.onInited();
         }
+        */
     }
 }
 

@@ -11,5 +11,5 @@ interface Props<T extends {
 }
 export declare function IDValue<T extends {
     id?: number;
-}>({ id, ID, Template: Value }: Props<T>): JSX.Element;
+}>({ id, ID, Template }: Props<T>): JSX.Element;
 export {};

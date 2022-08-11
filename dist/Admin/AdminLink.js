@@ -1,4 +1,15 @@
 "use strict";
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -48,9 +59,13 @@ var EnumAdminRoleInEdit;
     EnumAdminRoleInEdit[EnumAdminRoleInEdit["nSys"] = -1] = "nSys";
     EnumAdminRoleInEdit[EnumAdminRoleInEdit["nAdmin"] = -2] = "nAdmin";
 })(EnumAdminRoleInEdit = exports.EnumAdminRoleInEdit || (exports.EnumAdminRoleInEdit = {}));
+// role: 1=系统管理员，可以多个；2=业务管理员，管理角色，不能更改系统管理员
+// role = -1: 暂停系统管理员，24小时内，可以自己恢复。超过24小时，不可以自己恢复
+// 也许以后需要其它的角色
+// 这个管理员只能通过admins来设置
 function AdminLink(_a) {
     var _this = this;
-    var LinkContent = _a.LinkContent, me = _a.me, loadAdmins = _a.loadAdmins, setAdmin = _a.setAdmin, setMeAdmin = _a.setMeAdmin;
+    var LinkContainer = _a.LinkContainer, me = _a.me, loadAdmins = _a.loadAdmins, setAdmin = _a.setAdmin, setMeAdmin = _a.setMeAdmin, children = _a.children;
     var nav = (0, tonwa_com_1.useNav)();
     var _b = (0, react_1.useState)(null), adminState = _b[0], setAdminState = _b[1];
     var load = (0, react_1.useCallback)(function () { return __awaiter(_this, void 0, void 0, function () {
@@ -60,8 +75,10 @@ function AdminLink(_a) {
                 case 0: return [4 /*yield*/, loadAdmins()];
                 case 1:
                     retAdmins = _a.sent();
-                    if (!retAdmins)
+                    if (!retAdmins) {
+                        setAdminState(undefined);
                         return [2 /*return*/];
+                    }
                     state = {
                         meAdmin: undefined,
                         sysAdmins: [],
@@ -95,7 +112,10 @@ function AdminLink(_a) {
         load();
     }, [load]);
     if (adminState === null) {
-        return (0, jsx_runtime_1.jsx)(tonwa_com_1.Spinner, {}, void 0);
+        return (0, jsx_runtime_1.jsxs)(LinkContainer, __assign({ onClick: function () { return null; } }, { children: [(0, jsx_runtime_1.jsx)(tonwa_com_1.Spinner, {}, void 0), (0, jsx_runtime_1.jsx)("span", {}, void 0)] }), void 0);
+    }
+    if (adminState === undefined) {
+        return null;
     }
     var meAdmin = adminState.meAdmin, sysAdmins = adminState.sysAdmins, admins = adminState.admins;
     if (meAdmin === undefined)
@@ -126,7 +146,7 @@ function AdminLink(_a) {
             }
         });
     }); };
-    return (0, jsx_runtime_1.jsx)(LinkContent, { onClick: onClick }, void 0);
+    return (0, jsx_runtime_1.jsx)(LinkContainer, __assign({ onClick: onClick }, { children: children }), void 0);
 }
 exports.AdminLink = AdminLink;
 //# sourceMappingURL=AdminLink.js.map

@@ -10,7 +10,7 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(require("./TagInputBase"), exports);
+__exportStar(require("./TagInput"), exports);
 __exportStar(require("./UqTag"), exports);
-__exportStar(require("./TagPageBase"), exports);
+__exportStar(require("./TagPage"), exports);
 //# sourceMappingURL=index.js.map

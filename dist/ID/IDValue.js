@@ -42,7 +42,7 @@ var react_1 = require("react");
 var maxArr = 1000;
 var caches = [];
 function IDValue(_a) {
-    var id = _a.id, ID = _a.ID, Value = _a.Template;
+    var id = _a.id, ID = _a.ID, Template = _a.Template;
     var _b = (0, react_1.useState)(undefined), value = _b[0], setValue = _b[1];
     (0, react_1.useEffect)(function () {
         function getValue() {
@@ -85,7 +85,7 @@ function IDValue(_a) {
     }, [id, ID]);
     if (value === null)
         return null;
-    return (0, jsx_runtime_1.jsx)(Value, { value: value !== null && value !== void 0 ? value : { id: undefined } }, void 0);
+    return (0, jsx_runtime_1.jsx)(Template, { value: value !== null && value !== void 0 ? value : { id: undefined } }, void 0);
 }
 exports.IDValue = IDValue;
 //# sourceMappingURL=IDValue.js.map

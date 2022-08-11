@@ -88,20 +88,23 @@ var react_router_dom_1 = require("react-router-dom");
 var tonwa_com_1 = require("tonwa-com");
 var tonwa_uq_1 = require("tonwa-uq");
 var tonwa_uq_2 = require("tonwa-uq");
-var uq_1 = require("./uq");
+// UQsLoader, 
+// import { uqsProxy } from './uq';
 var tonwa_com_2 = require("tonwa-com");
 var valtio_1 = require("valtio");
 var tonwa_com_3 = require("tonwa-com");
 var tonwa_com_4 = require("tonwa-com");
 var tonwa_com_5 = require("tonwa-com");
+var uq_old_1 = require("./uq-old");
 var uqAppId = 1;
 var UqAppBase = /** @class */ (function () {
-    function UqAppBase(appConfig, uqConfigs) {
+    function UqAppBase(appConfig, uqConfigs, uqsSchema) {
         //private uqsUserId: number = -1;
         this.initCalled = false;
         this.uqAppBaseId = uqAppId++;
         this.appConfig = appConfig;
         this.uqConfigs = uqConfigs;
+        this.uqsSchema = uqsSchema;
         this.version = appConfig.version;
         this.responsive = (0, valtio_1.proxy)({
             user: undefined,
@@ -155,9 +158,9 @@ var UqAppBase = /** @class */ (function () {
     };
     UqAppBase.prototype.init = function (initPage, navigateFunc) {
         return __awaiter(this, void 0, void 0, function () {
-            var user, guest, version, uqsLoader, _a;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+            var user, guest, uqsMan, error_1;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
                     case 0:
                         if (this.initCalled === true)
                             return [2 /*return*/];
@@ -166,7 +169,7 @@ var UqAppBase = /** @class */ (function () {
                         return [4 /*yield*/, this.net.init()];
                     case 1:
                         //if (this.responsive.user?.id === this.uqsUserId) return;
-                        _b.sent();
+                        _a.sent();
                         user = this.localData.user.get();
                         if (!user) return [3 /*break*/, 2];
                         this.logined(user);
@@ -176,8 +179,8 @@ var UqAppBase = /** @class */ (function () {
                         if (!(guest === undefined)) return [3 /*break*/, 4];
                         return [4 /*yield*/, this.net.userApi.guest()];
                     case 3:
-                        guest = _b.sent();
-                        _b.label = 4;
+                        guest = _a.sent();
+                        _a.label = 4;
                     case 4:
                         if (!guest) {
                             debugger;
@@ -185,22 +188,23 @@ var UqAppBase = /** @class */ (function () {
                         }
                         this.net.setCenterToken(0, guest.token);
                         this.localData.guest.set(guest);
-                        _b.label = 5;
+                        _a.label = 5;
                     case 5:
-                        version = this.appConfig.version;
-                        uqsLoader = new tonwa_uq_2.UQsLoader(this.net, version, this.uqConfigs);
-                        _a = this;
-                        return [4 /*yield*/, uqsLoader.build()];
+                        _a.trys.push([5, 8, , 9]);
+                        return [4 /*yield*/, (0, tonwa_uq_2.createUQsMan)(this.net, this.appConfig.version, this.uqConfigs, this.uqsSchema)];
                     case 6:
-                        _a.initErrors = _b.sent();
-                        this.uqs = (0, uq_1.uqsProxy)(uqsLoader.uqsMan); //  this.uqsMan.proxy;
-                        if (!!this.initErrors) return [3 /*break*/, 8];
+                        uqsMan = _a.sent();
+                        this.uqs = (0, uq_old_1.uqsProxy)(uqsMan);
                         this.appNav.init(initPage, navigateFunc);
                         return [4 /*yield*/, this.onInited()];
                     case 7:
-                        _b.sent();
-                        _b.label = 8;
-                    case 8: return [2 /*return*/];
+                        _a.sent();
+                        return [3 /*break*/, 9];
+                    case 8:
+                        error_1 = _a.sent();
+                        console.error(error_1);
+                        return [3 /*break*/, 9];
+                    case 9: return [2 /*return*/];
                 }
             });
         });

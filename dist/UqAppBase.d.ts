@@ -1,8 +1,8 @@
 import React, { ReactNode } from 'react';
 import { NavigateFunction } from 'react-router-dom';
 import { AppNav } from 'tonwa-com';
-import { Hosts, UqConfig, User, UserApi } from 'tonwa-uq';
-import { Net } from "tonwa-uq";
+import { UqConfig, User, UserApi } from 'tonwa-uq';
+import { Net, Hosts } from "tonwa-uq";
 export interface AppConfig {
     center: string;
     debug: Hosts;
@@ -16,6 +16,7 @@ export interface AppConfig {
 export declare abstract class UqAppBase<U = any> {
     private readonly appConfig;
     private readonly uqConfigs;
+    private readonly uqsSchema;
     private localData;
     readonly uqAppBaseId: number;
     readonly net: Net;
@@ -27,7 +28,9 @@ export declare abstract class UqAppBase<U = any> {
     };
     guest: number;
     uqs: U;
-    constructor(appConfig: AppConfig, uqConfigs: UqConfig[]);
+    constructor(appConfig: AppConfig, uqConfigs: UqConfig[], uqsSchema: {
+        [uq: string]: any;
+    });
     logined(user: User): void;
     setUserProp(propName: string, value: any): Promise<void>;
     saveLocalData(): void;

@@ -1,6 +1,6 @@
 {
     "name": "tonwa-uq-com",
-    "version": "0.1.15",
+    "version": "1.0.0",
     "description": "uq components",
     "private": false,
     "main": "dist/index.js",
@@ -24,13 +24,13 @@
         "@types/node-fetch": "^2.1.2",
         "@types/react": "^18.0.5",
         "@types/react-dom": "^18.0.1",
-        "bootstrap": "^5.0.2",
-        "react": "^18.0.0",
-        "react-dom": "^18.0.0",
+        "bootstrap": "^5.2.0",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
         "react-router-dom": "^6.3.0",
         "tonwa-com": "^0.1.6",
         "tonwa-uq": "^0.1.5",
         "typescript": "^4.0.0",
-        "valtio": "^1.5.2"
+        "valtio": "^1.6.3"
     }
 }

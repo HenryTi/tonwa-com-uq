@@ -72,6 +72,7 @@ function SelectUser(_a) {
             }
         });
     }); };
+    header = header !== null && header !== void 0 ? header : 'Select user';
     var vContent;
     if (user === null) {
         vContent = null;
@@ -81,9 +82,9 @@ function SelectUser(_a) {
     }
     else {
         var name_1 = user.name, nick = user.nick, icon = user.icon;
-        vContent = (0, jsx_runtime_1.jsxs)(jsx_runtime_1.Fragment, { children: [(0, jsx_runtime_1.jsxs)("div", __assign({ className: "d-flex" }, { children: [(0, jsx_runtime_1.jsx)(Image_1.Image, { src: icon, className: "me-4 w-2-5c h-2-5c" }, void 0), (0, jsx_runtime_1.jsxs)("div", { children: [(0, jsx_runtime_1.jsxs)("div", { children: [(0, jsx_runtime_1.jsx)(tonwa_com_1.MutedSmall, { children: "Name:" }, void 0), " \u00A0 ", name_1] }, void 0), (0, jsx_runtime_1.jsxs)("div", { children: [(0, jsx_runtime_1.jsx)(tonwa_com_1.MutedSmall, { children: "Nick:" }, void 0), " \u00A0 ", nick] }, void 0)] }, void 0)] }), void 0), (0, jsx_runtime_1.jsx)("div", __assign({ className: "text-center mt-5" }, { children: (0, jsx_runtime_1.jsx)("button", __assign({ className: "btn btn-primary", onClick: function () { return nav.returnCall(user); } }, { children: header }), void 0) }), void 0)] }, void 0);
+        vContent = (0, jsx_runtime_1.jsxs)(jsx_runtime_1.Fragment, { children: [(0, jsx_runtime_1.jsxs)("div", __assign({ className: "d-flex" }, { children: [(0, jsx_runtime_1.jsx)(Image_1.Image, { src: icon, className: "me-4 w-2-5c h-2-5c" }, void 0), (0, jsx_runtime_1.jsxs)("div", { children: [(0, jsx_runtime_1.jsxs)("div", { children: [(0, jsx_runtime_1.jsx)(tonwa_com_1.MutedSmall, { children: "Name:" }, void 0), " \u00A0 ", name_1] }, void 0), (0, jsx_runtime_1.jsxs)("div", { children: [(0, jsx_runtime_1.jsx)(tonwa_com_1.MutedSmall, { children: "Nick:" }, void 0), " \u00A0 ", nick] }, void 0)] }, void 0)] }), void 0), (0, jsx_runtime_1.jsx)("div", __assign({ className: "text-center mt-5" }, { children: (0, jsx_runtime_1.jsx)("button", __assign({ className: "btn btn-primary", onClick: function () { return nav.returnCall(user); } }, { children: "OK" }), void 0) }), void 0)] }, void 0);
     }
-    return (0, jsx_runtime_1.jsx)(tonwa_com_1.Page, __assign({ header: header !== null && header !== void 0 ? header : 'Select user', back: "close" }, { children: (0, jsx_runtime_1.jsxs)("div", __assign({ className: "p-3 d-flex align-items-center flex-column" }, { children: [(0, jsx_runtime_1.jsx)("div", __assign({ className: "mx-auto mb-3" }, { children: (0, jsx_runtime_1.jsx)(tonwa_com_1.SearchBox, { className: "w-min-20c", onFocus: function () { return setUser(null); }, onSearch: onSearch, placeholder: "user account" }, void 0) }), void 0), (0, jsx_runtime_1.jsx)("div", __assign({ className: "border rounded-3 bg-white p-5 mx-auto w-min-20c" }, { children: vContent }), void 0)] }), void 0) }), void 0);
+    return (0, jsx_runtime_1.jsx)(tonwa_com_1.Page, __assign({ header: header, back: "close" }, { children: (0, jsx_runtime_1.jsxs)("div", __assign({ className: "p-3 d-flex align-items-center flex-column" }, { children: [(0, jsx_runtime_1.jsx)("div", __assign({ className: "mx-auto mb-3" }, { children: (0, jsx_runtime_1.jsx)(tonwa_com_1.SearchBox, { className: "w-min-20c", onFocus: function () { return setUser(null); }, onSearch: onSearch, placeholder: "user account" }, void 0) }), void 0), (0, jsx_runtime_1.jsx)("div", __assign({ className: "border rounded-3 bg-white p-5 mx-auto w-min-20c" }, { children: vContent }), void 0)] }), void 0) }), void 0);
 }
 exports.SelectUser = SelectUser;
 //# sourceMappingURL=SelectUser.js.map

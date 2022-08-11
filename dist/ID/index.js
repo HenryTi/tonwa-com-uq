@@ -12,5 +12,6 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./IDListEdit"), exports);
 __exportStar(require("./IDNOInput"), exports);
-__exportStar(require("./IDValue"), exports);
+__exportStar(require("./IdView"), exports);
+__exportStar(require("./IDSelect"), exports);
 //# sourceMappingURL=index.js.map
